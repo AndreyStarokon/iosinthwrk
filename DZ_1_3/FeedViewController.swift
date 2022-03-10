@@ -41,7 +41,7 @@ class FeedViewController: UIViewController {
         pcView.view.backgroundColor = .yellow
         pcView.title = post.title
         navigationController?.pushViewController(pcView, animated: true)
-        
+        //создание контроллера
     }
 }
 
