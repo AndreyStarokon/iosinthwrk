@@ -18,7 +18,6 @@ class PostViewController: UIViewController {
     @objc  func didTap() {
         let pcView = InfoViewController()
         let navVC = UINavigationController(rootViewController: pcView)
-    //    navigationController?.pushViewController(pcView, animated: true)
-       present(navVC, animated: true)
+        present(navVC, animated: true)
   }
 }

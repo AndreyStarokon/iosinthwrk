@@ -51,7 +51,7 @@ class ProfileHeaderView: UIView {
         
         return text
     }()
-    let changeStatusButton: UIButton = {
+   private let changeStatusButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemBlue
         button.setTitle("Change Status", for: .normal)
