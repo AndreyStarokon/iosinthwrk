@@ -16,8 +16,9 @@
 		4744396927D3D4A90006BF0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4744396827D3D4A90006BF0E /* Assets.xcassets */; };
 		4744396C27D3D4A90006BF0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4744396A27D3D4A90006BF0E /* LaunchScreen.storyboard */; };
 		4744399427D4B9F20006BF0E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4744399327D4B9F20006BF0E /* ProfileViewController.swift */; };
-		47D34AA727F062ED002F8680 /* mailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D34AA627F062ED002F8680 /* mailTextField.swift */; };
+		47D34AA727F062ED002F8680 /* MailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D34AA627F062ED002F8680 /* MailText.swift */; };
 		47D34AA927F23E21002F8680 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D34AA827F23E21002F8680 /* ColorExtension.swift */; };
+		47D34AAB27F241D7002F8680 /* PasswordText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D34AAA27F241D7002F8680 /* PasswordText.swift */; };
 		47F1A7DC27DE4C46009F22B5 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F1A7DB27DE4C46009F22B5 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,8 +34,9 @@
 		4744396B27D3D4A90006BF0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4744396D27D3D4A90006BF0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4744399327D4B9F20006BF0E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		47D34AA627F062ED002F8680 /* mailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mailTextField.swift; sourceTree = "<group>"; };
+		47D34AA627F062ED002F8680 /* MailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailText.swift; sourceTree = "<group>"; };
 		47D34AA827F23E21002F8680 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		47D34AAA27F241D7002F8680 /* PasswordText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordText.swift; sourceTree = "<group>"; };
 		47F1A7DB27DE4C46009F22B5 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,7 +89,8 @@
 				4744399327D4B9F20006BF0E /* ProfileViewController.swift */,
 				47F1A7DB27DE4C46009F22B5 /* ProfileHeaderView.swift */,
 				4716EFED27EB9F30007935DF /* LogInViewController.swift */,
-				47D34AA627F062ED002F8680 /* mailTextField.swift */,
+				47D34AAA27F241D7002F8680 /* PasswordText.swift */,
+				47D34AA627F062ED002F8680 /* MailText.swift */,
 				47D34AA827F23E21002F8680 /* ColorExtension.swift */,
 			);
 			path = Profile;
@@ -164,13 +167,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4716EFEA27E25B43007935DF /* PostViewController.swift in Sources */,
-				47D34AA727F062ED002F8680 /* mailTextField.swift in Sources */,
+				47D34AA727F062ED002F8680 /* MailText.swift in Sources */,
 				4716EFE827E25AE3007935DF /* StuctPost.swift in Sources */,
 				4744399427D4B9F20006BF0E /* ProfileViewController.swift in Sources */,
 				4716EFEC27E25B78007935DF /* InfoViewController.swift in Sources */,
 				4716EFEE27EB9F30007935DF /* LogInViewController.swift in Sources */,
 				4744396427D3D4A70006BF0E /* FeedViewController.swift in Sources */,
 				4744396027D3D4A70006BF0E /* AppDelegate.swift in Sources */,
+				47D34AAB27F241D7002F8680 /* PasswordText.swift in Sources */,
 				47F1A7DC27DE4C46009F22B5 /* ProfileHeaderView.swift in Sources */,
 				47D34AA927F23E21002F8680 /* ColorExtension.swift in Sources */,
 			);
