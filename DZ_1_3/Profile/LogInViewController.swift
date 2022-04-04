@@ -77,7 +77,7 @@ class LogInViewController: UIViewController {
     
     @objc func logIn () {
         let profile = ProfileViewController()
-        present(profile, animated: true)
+        navigationController?.pushViewController(profile, animated: true)
     }
     
     private func setConsteraint(){

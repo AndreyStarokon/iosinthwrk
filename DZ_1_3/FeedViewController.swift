@@ -8,7 +8,7 @@
 import UIKit
 
 
-var post = Post(title: "заголовок")
+
 class FeedViewController: UIViewController {
 
     private let stackView: UIStackView = {
@@ -73,7 +73,7 @@ class FeedViewController: UIViewController {
     @objc  func buttonShowPost() {
         let pcView = PostViewController()
         pcView.view.backgroundColor = .yellow
-        pcView.title = post.title
+        pcView.title = "пост"
         navigationController?.pushViewController(pcView, animated: true)
         //создание контроллера
     }

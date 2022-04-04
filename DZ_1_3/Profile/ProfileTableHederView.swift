@@ -7,21 +7,20 @@
 
 import UIKit
 
+
 class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
     super.init(frame: frame)
-    setupViews()
+        setupViews()
         setConstraints()
-    
     
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     func setupViews() {
-        statusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+       statusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
-    
     private let profileImage: UIImageView = {
         let image =  UIImageView()
         image.image = UIImage(named: "2764195349")
@@ -45,19 +44,31 @@ class ProfileHeaderView: UIView {
         let text = UILabel()
         text.text = "хипстер кот"
         text.font = .systemFont(ofSize: 16, weight: .bold)
-        text.backgroundColor = .lightGray
         text.translatesAutoresizingMaskIntoConstraints = false
         text.textColor = .black
         
         return text
     }()
-   private let changeStatusButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .systemBlue
-        button.setTitle("Change Status", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    let statusTextField: UITextField = {
+        let newStatus = UITextField()
+        newStatus.backgroundColor = .white
+        newStatus.isHidden = true
+        newStatus.layer.cornerRadius = 12
+        newStatus.layer.borderWidth = 1
+        newStatus.layer.borderColor = UIColor.black.cgColor
+        newStatus.textColor = .black
+        newStatus.leftViewMode = .always
+        newStatus.clearButtonMode = .always
+        newStatus.returnKeyType = .done
+        newStatus.placeholder = " new status"
+        newStatus.font = UIFont(name: "Apple SD Ghotic Neo", size: 15)
+        newStatus.tintColor = .systemGray6
+        
+        newStatus.autocapitalizationType = .none
+        newStatus.translatesAutoresizingMaskIntoConstraints = false
+        return newStatus
     }()
+  
     let statusButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 16
@@ -70,17 +81,7 @@ class ProfileHeaderView: UIView {
         return button
     }()
     @objc func buttonPressed() {
-        print("\(String(describing: statusText.text!))")
-    }
-       
-    @objc func statusTextChanged (_ textField: UITextField){
-        let newStatus = UITextField()
-        newStatus.placeholder = "новый статус"
-        newStatus.backgroundColor = .white
-        newStatus.layer.cornerRadius = 16
-        newStatus.layer.borderWidth = 1
-        newStatus.font = .boldSystemFont(ofSize: 16)
-        
+        statusTextField.isHidden = false
     }
 }
         
@@ -90,15 +91,21 @@ extension ProfileHeaderView {
        self.addSubview(profileImage)
        self.addSubview(statusText)
        self.addSubview(nameBar)
-       self.addSubview(changeStatusButton)
-       
+       self.addSubview(statusTextField)
        NSLayoutConstraint.activate([
        profileImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -250),
        profileImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
        profileImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
        profileImage.heightAnchor.constraint(equalToConstant: 120 )
        ])
-   
+       
+       NSLayoutConstraint.activate([
+       statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+       statusTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 150),
+       statusTextField.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -10),
+       statusTextField.heightAnchor.constraint(equalToConstant: 40 )
+       ])
+       
        NSLayoutConstraint.activate([
        statusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
        statusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
@@ -107,14 +114,8 @@ extension ProfileHeaderView {
        ])
        
        NSLayoutConstraint.activate([
-        changeStatusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-        changeStatusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-        changeStatusButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-        changeStatusButton.heightAnchor.constraint(equalToConstant: 50),
-       ])
-       
-       NSLayoutConstraint.activate([
        statusText.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -34),
+       statusText.topAnchor.constraint(equalTo: nameBar.bottomAnchor, constant: 10),
        statusText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 150),
        statusText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
        ])
@@ -124,6 +125,6 @@ extension ProfileHeaderView {
        nameBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -150),
        nameBar.heightAnchor.constraint(equalToConstant: 18)
        ])
-       
     }
 }
+
