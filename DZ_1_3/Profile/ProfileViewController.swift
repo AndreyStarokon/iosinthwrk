@@ -14,9 +14,12 @@ class ProfileViewController: UIViewController {
         table.dataSource = self
         table.delegate = self
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.register(PostTableViewTabCell.self, forCellReuseIdentifier: PostTableViewTabCell.identifaer)
+        table.register(PostTableViewTabCell.self, forCellReuseIdentifier: PostTableViewCell.identifaer)
+    //    table.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotoViewCell.identifaer)
+
         return table
     }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,24 +44,46 @@ extension ProfileViewController: UITableViewDelegate {
         
         UITableView.automaticDimension
     }
+    
     internal func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = ProfileHeaderView()
+        var header: UIView?
+        if section == 0 {
+            header = ProfileHeaderView()
+        }
         return header
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        250
+        if section == 0{
+            return 250}
+        else {
+            return 0
+        }
     }
-  
 }
 
 extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        posts.count
+        if section == 0 {
+            return posts.count
+        }
+        else {
+            return 1
+      }
+       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewTabCell.identifaer, for: indexPath) as! PostTableViewTabCell
-        cell.postCell.setupCell(post: posts[indexPath.row])
-        return cell
+    //    if indexPath.section == 1 {
+        let cellOne = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifaer, for: indexPath) as! PostTableViewTabCell
+       cellOne.postCell.setupCell(post: posts[indexPath.row])
+        return cellOne
+    //    }
+    //    else {
+    //    let cellTwo = tableView.dequeueReusableCell(withIdentifier: PhotoViewCell.identifaer, for: indexPath) as! PhotosTableViewCell
+    //    return cellTwo
+    //    }
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+       1
     }
 }
