@@ -13,7 +13,7 @@ class ProfileHeaderView: UIView {
     super.init(frame: frame)
         setupViews()
         setConstraints()
-    
+       
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

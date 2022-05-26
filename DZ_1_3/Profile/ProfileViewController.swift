@@ -11,11 +11,15 @@ class ProfileViewController: UIViewController {
     
     private lazy var headerTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
+        #if DEBUG
+        table.backgroundColor = .red
+        #else
+        table.backgroundColor = .systemGray6
+        #endif
         table.dataSource = self
         table.delegate = self
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(PostTableViewTabCell.self, forCellReuseIdentifier: PostTableViewTabCell.identifaer)
-     //   table.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifaer)
         return table
     }()
     
@@ -27,7 +31,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         setupConstraint()
-        
+        view.backgroundColor = .red
     }
     
     private func setupConstraint() {

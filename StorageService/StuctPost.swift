@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Post {
+public struct Post {
     var author: String
     var description: String
     var image: UIImage
