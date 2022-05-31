@@ -80,7 +80,7 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
        }
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewTabCell.identifaer, for: indexPath) as! PostTableViewTabCell
-        cell.postCell.setupCell(post: posts[indexPath.row], numb: 1)
+        cell.postCell.setupCell(post: posts[indexPath.row], numb: indexPath.row)
                return cell
     }
     
