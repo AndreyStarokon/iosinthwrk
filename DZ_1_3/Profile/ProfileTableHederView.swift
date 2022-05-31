@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 
 class ProfileHeaderView: UIView {
@@ -92,39 +93,41 @@ extension ProfileHeaderView {
        self.addSubview(statusText)
        self.addSubview(nameBar)
        self.addSubview(statusTextField)
-       NSLayoutConstraint.activate([
-       profileImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -250),
-       profileImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-       profileImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-       profileImage.heightAnchor.constraint(equalToConstant: 120 )
-       ])
        
-       NSLayoutConstraint.activate([
-       statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-       statusTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 150),
-       statusTextField.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -10),
-       statusTextField.heightAnchor.constraint(equalToConstant: 40 )
-       ])
+       profileImage.snp.makeConstraints { make in
+           make.right.equalToSuperview().inset(250)
+           make.left.equalToSuperview().inset(16)
+           make.top.equalToSuperview().inset(16)
+           make.height.equalTo(120)
+       }
+       statusTextField.snp.makeConstraints { make in
+           make.left.equalToSuperview().inset(150)
+           make.right.equalToSuperview().inset(16)
+           make.bottom.equalTo(statusButton.snp_topMargin).inset(-20)
+           make.height.equalTo(40)
+       }
        
-       NSLayoutConstraint.activate([
-       statusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-       statusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-       statusButton.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 16),
-       statusButton.heightAnchor.constraint(equalToConstant: 50),
-       ])
+       statusButton.snp.makeConstraints { make in
+           make.left.equalToSuperview().inset(16)
+           make.right.equalToSuperview().inset(16)
+           make.top.equalTo(profileImage.snp_bottomMargin).inset(-16)
+           make.height.equalTo(50)
+       }
        
-       NSLayoutConstraint.activate([
-       statusText.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -34),
-       statusText.topAnchor.constraint(equalTo: nameBar.bottomAnchor, constant: 10),
-       statusText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 150),
-       statusText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-       ])
+       statusText.snp.makeConstraints { make in
+           make.top.equalTo(nameBar.snp_bottomMargin).inset(10)
+           make.bottom.equalTo(statusButton.snp_topMargin).inset(-34)
+           make.right.equalToSuperview().inset(16)
+           make.left.equalToSuperview().inset(150)
+           
+       }
        
-       NSLayoutConstraint.activate([
-       nameBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
-       nameBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -150),
-       nameBar.heightAnchor.constraint(equalToConstant: 18)
-       ])
+       nameBar.snp.makeConstraints { make in
+           make.right.equalToSuperview().inset(27)
+           make.left.equalToSuperview().inset(150)
+           make.top.equalToSuperview().inset(27)
+           make.height.equalTo(18)
+       }
     }
 }
 

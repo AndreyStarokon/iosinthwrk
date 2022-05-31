@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import iOSIntPackage
 class PostTableViewCell: UIView {
     override init(frame: CGRect) {
         super .init(frame: frame)
@@ -17,8 +17,22 @@ class PostTableViewCell: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func setupCell(post: Post) {
-        postImage.image = post.image
+    func setupCell(post: Post, numb: Int) {
+        let imageFilter: ColorFilter
+        switch numb {
+        case 0:
+            imageFilter = .colorInvert
+        case 1:
+            imageFilter = .noir
+        case 3:
+            imageFilter = .gaussianBlur(radius: 3.0)
+        default:
+            imageFilter = .chrome
+        }
+        
+        var image: (UIImage?)
+        ImageProcessor().processImage(sourceImage: post.image, filter: imageFilter) { imageFilter in image = imageFilter}
+        postImage.image = image
         postViews.text = "Views:\(post.views)"
         postLikes.text = "Likes:\(post.likes)"
         authorText.text = post.author

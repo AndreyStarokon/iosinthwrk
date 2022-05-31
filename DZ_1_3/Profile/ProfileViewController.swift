@@ -9,6 +9,7 @@ import UIKit
 class ProfileViewController: UIViewController {
     let posts = Post.makePost()
     
+    
     private lazy var headerTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         #if DEBUG
@@ -79,7 +80,7 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
        }
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewTabCell.identifaer, for: indexPath) as! PostTableViewTabCell
-               cell.postCell.setupCell(post: posts[indexPath.row])
+        cell.postCell.setupCell(post: posts[indexPath.row], numb: 1)
                return cell
     }
     
