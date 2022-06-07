@@ -20,6 +20,7 @@
 		4733C944283EA7E600501D66 /* PostTableViewCell+Extencion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CD04327F61CF600F89EDD /* PostTableViewCell+Extencion.swift */; };
 		4733C946283EA8F300501D66 /* StuctPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716EFE727E25AE3007935DF /* StuctPost.swift */; };
 		4733C94B283EB4C300501D66 /* StuctPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716EFE727E25AE3007935DF /* StuctPost.swift */; };
+		4736F8B3284B4CA500C03044 /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4736F8B02847D8BA00C03044 /* CurrentUserService.swift */; };
 		473A835B2843F903003B6511 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 473A835A2843F903003B6511 /* iOSIntPackage */; };
 		473CD04627FCAD2300F89EDD /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CD04527FCAD2300F89EDD /* PhotosTableViewCell.swift */; };
 		473CD04827FCAE1900F89EDD /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CD04727FCAE1900F89EDD /* PhotoViewCell.swift */; };
@@ -86,6 +87,7 @@
 		4733C924283D56F000501D66 /* StorageService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StorageService.docc; sourceTree = "<group>"; };
 		4733C92A283D56F000501D66 /* StorageServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorageServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4733C931283D56F000501D66 /* StorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceTests.swift; sourceTree = "<group>"; };
+		4736F8B02847D8BA00C03044 /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
 		473CD04127F619F200F89EDD /* PostTableViewTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewTabCell.swift; sourceTree = "<group>"; };
 		473CD04327F61CF600F89EDD /* PostTableViewCell+Extencion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostTableViewCell+Extencion.swift"; sourceTree = "<group>"; };
 		473CD04527FCAD2300F89EDD /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				47D34AA827F23E21002F8680 /* ColorExtension.swift */,
 				473CD0492801EFD800F89EDD /* PhotosViewController.swift */,
 				473CD04B2801F34400F89EDD /* PhotosCollectionViewCell.swift */,
+				4736F8B02847D8BA00C03044 /* CurrentUserService.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				4744396427D3D4A70006BF0E /* FeedViewController.swift in Sources */,
 				473CD04627FCAD2300F89EDD /* PhotosTableViewCell.swift in Sources */,
 				4744396027D3D4A70006BF0E /* AppDelegate.swift in Sources */,
+				4736F8B3284B4CA500C03044 /* CurrentUserService.swift in Sources */,
 				4733C942283EA7E000501D66 /* PostViewController.swift in Sources */,
 				47D34AAB27F241D7002F8680 /* PasswordText.swift in Sources */,
 				47F1A7DC27DE4C46009F22B5 /* ProfileTableHederView.swift in Sources */,

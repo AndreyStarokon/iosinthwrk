@@ -22,7 +22,7 @@ class ProfileHeaderView: UIView {
     func setupViews() {
        statusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
-    private let profileImage: UIImageView = {
+     let profileImage: UIImageView = {
         let image =  UIImageView()
         image.image = UIImage(named: "2764195349")
         image.frame = CGRect(x: 16, y: 102, width: 120, height: 120)
@@ -33,7 +33,7 @@ class ProfileHeaderView: UIView {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    private let statusText: UILabel = {
+     let statusText: UILabel = {
         let statusText = UILabel()
         statusText.text = "слушает музыку..."
         statusText.textColor = .gray
@@ -41,7 +41,7 @@ class ProfileHeaderView: UIView {
         statusText.translatesAutoresizingMaskIntoConstraints = false
         return statusText
     }()
-    private let nameBar: UILabel = {
+     lazy var nameBar: UILabel = {
         let text = UILabel()
         text.text = "хипстер кот"
         text.font = .systemFont(ofSize: 16, weight: .bold)
