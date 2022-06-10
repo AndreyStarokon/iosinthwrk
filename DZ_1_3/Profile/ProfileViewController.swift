@@ -56,7 +56,6 @@ class ProfileViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
         setupConstraint()
         view.backgroundColor = .red
-        print("Ivan")
     }
     
     

@@ -7,7 +7,12 @@
 
 import UIKit
 
+
+
 class LogInViewController: UIViewController {
+    
+    var delegate: LoginViewControllerDelegate?
+    
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)    // подписаться на уведомления
@@ -76,9 +81,17 @@ class LogInViewController: UIViewController {
     }
     
     @objc func logIn () {
-        let profile = ProfileViewController()
-        navigationController?.pushViewController(profile, animated: true)
+                guard let loginName = mailText.text else { return }
+                #if DEBUG
+                let userService = TestUserService()
+                #else
+                let userService = CurrentUserService()
+                guard userService.getUserName(loginName: loginName) != nil else { return }
+                #endif
+        let profile = ProfileViewController(loginName: loginName, user: userService)
+                navigationController?.pushViewController(profile, animated: true)
     }
+    
     
     private func setConsteraint(){
         view.addSubview(scrollView)
@@ -136,6 +149,11 @@ class LogInViewController: UIViewController {
     }
 
 
+}
+
+protocol LoginViewControllerDelegate {
+    func checkLogin(userLogin: String) -> Bool
+    func checkPass(userPass: String) -> Bool
 }
 
 extension LogInViewController: UITextFieldDelegate {

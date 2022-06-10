@@ -8,7 +8,7 @@
 import UIKit
 
 struct someUser{
-    static let fullName = "Ivan Ivanov"
+    static let fullName = "Andrey"
     static let avatar = "avatar"
     static let status = "слушает музыку..."
 }
@@ -49,6 +49,6 @@ final class CurrentUserService: UserService {
 
 final class TestUserService: UserService {
     func getUserName(loginName: String) -> User? {
-        return User(fullName: "хипстер кот", avatar: "2764195349", status: someUser.status )
+        return User(fullName: "Andrey", avatar: "2764195349", status: someUser.status )
     }
 }
