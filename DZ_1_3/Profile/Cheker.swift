@@ -9,8 +9,8 @@ import Foundation
 
 struct Checker {
     static let shared = Checker()
-    let login = "Andrey"
-    let password = "Starokon"
+   private let login = "Andrey"
+   private let password = "Starokon"
     
     private init() {
         

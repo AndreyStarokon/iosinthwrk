@@ -12,7 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
              
         var window: UIWindow?
-        
+       
+    
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
             
             let tabBarVC = UITabBarController()
@@ -20,17 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.makeKeyAndVisible()
             window?.rootViewController = tabBarVC
             
-            let firstVC = FeedViewController()
+            let firstVC = LogInViewController()
+            firstVC.delegate = LoginInspector()
             let firstNavController = UINavigationController(rootViewController: firstVC)
                   
-            firstVC.tabBarItem = UITabBarItem(title: "feed", image: UIImage(systemName: "house"), tag: 0)
+            firstVC.tabBarItem = UITabBarItem(title: "pofile", image: UIImage(systemName: "person"), tag: 0)
             
-            
- //           let secondVC = ProfileViewController()
-            let secondVC = LogInViewController()
+            let secondVC = FeedViewController()
        
             let secondNavController = UINavigationController(rootViewController: secondVC)
-            secondVC.tabBarItem = UITabBarItem(title: "pofile", image: UIImage(systemName: "person"), tag: 1)
+            secondVC.tabBarItem = UITabBarItem(title: "feed", image: UIImage(systemName: "house"), tag: 1)
             
             tabBarVC.viewControllers = [firstNavController, secondNavController]
             UITabBar.appearance().backgroundColor = .white
