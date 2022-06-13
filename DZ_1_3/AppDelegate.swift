@@ -20,9 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.makeKeyAndVisible()
             window?.rootViewController = tabBarVC
+            let myFactory = MyLoginFactory()
             
             let firstVC = LogInViewController()
-            firstVC.delegate = LoginInspector()
+            
+            firstVC.delegate = myFactory.factory()
+            
             let firstNavController = UINavigationController(rootViewController: firstVC)
                   
             firstVC.tabBarItem = UITabBarItem(title: "pofile", image: UIImage(systemName: "person"), tag: 0)
@@ -34,16 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             tabBarVC.viewControllers = [firstNavController, secondNavController]
             UITabBar.appearance().backgroundColor = .white
-            if #available(iOS 13.0, *) {
-                        let navBarAppearance = UINavigationBarAppearance()
-                        navBarAppearance.configureWithOpaqueBackground()
-                        navBarAppearance.backgroundColor = UIColor.white
-                        secondNavController.navigationBar.standardAppearance = navBarAppearance
-                        secondNavController.navigationBar.scrollEdgeAppearance = navBarAppearance
-                    } else {
-                        secondNavController.edgesForExtendedLayout = []
-                    }
-       
+            
         return true
     }
 }
