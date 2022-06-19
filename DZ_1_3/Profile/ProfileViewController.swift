@@ -5,6 +5,7 @@
 //  Created by Ffhh Qerg on 06.03.2022.
 //
 import UIKit
+import iOSIntPackage
 
 class ProfileViewController: UIViewController {
     let posts = Post.makePost()
@@ -31,7 +32,7 @@ class ProfileViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    private lazy var imagePublisher = ImagePublisherFacade()
     
     private lazy var headerTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)

@@ -7,12 +7,16 @@
 
 import Foundation
 import UIKit
+import iOSIntPackage
 
-
+var imagesSet: [UIImage] = []
+let imageFacade = ImagePublisherFacade()
+let setFasade: () = imageFacade.addImagesWithTimer(time: 1, repeat: 20, userImages: imagesSet)
 
 class PhotosViewController: UIViewController {
     
-    private var images = [UIImage]()
+    private var imagesSet = [UIImage]()
+    
     
     private lazy var photoCollection:UICollectionView = {
       let layout = UICollectionViewFlowLayout()
@@ -34,9 +38,10 @@ class PhotosViewController: UIViewController {
         layout()
         for i in 1...20{
             let image = UIImage(named: "image\(i)")!
-            images.append(image)
+            imagesSet.append(image)
         }
-        
+        imageFacade.subscribe(self)
+        let _: () = imageFacade.addImagesWithTimer(time: 1, repeat: 20, userImages: imagesSet)
     }
     
     private func layout(){
@@ -64,14 +69,16 @@ extension PhotosViewController: UICollectionViewDelegate {
 
 // mark
 
-extension PhotosViewController: UICollectionViewDataSource{
+extension PhotosViewController: UICollectionViewDataSource {
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        images.count
+        imagesSet.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifaer, for: indexPath) as! PhotosCollectionViewCell
-        let image = images[indexPath.item]
+        let image = imagesSet[indexPath.item]
         cell.imageView.image = image
         return cell
     }
@@ -96,3 +103,12 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
         UIEdgeInsets(top: sideInset, left: sideInset, bottom: sideInset, right: sideInset)
     }
 }
+
+extension PhotosViewController: ImageLibrarySubscriber{
+    func receive(images: [UIImage]) {
+        imagesSet = images
+        photoCollection.reloadData()
+    }
+}
+
+
