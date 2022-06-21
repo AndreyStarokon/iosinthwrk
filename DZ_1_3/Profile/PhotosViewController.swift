@@ -35,13 +35,14 @@ class PhotosViewController: UIViewController {
         super.viewDidLoad()
         title = "Photo Gallery"
         navigationController?.isNavigationBarHidden = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(unsubscribe(_:)))
         layout()
         for i in 1...20{
             let image = UIImage(named: "image\(i)")!
             imagesSet.append(image)
         }
         imageFacade.subscribe(self)
-        let _: () = imageFacade.addImagesWithTimer(time: 1, repeat: 20, userImages: imagesSet)
+        imageFacade.addImagesWithTimer(time: 1, repeat: 20, userImages: imagesSet)
     }
     
     private func layout(){
@@ -53,6 +54,9 @@ class PhotosViewController: UIViewController {
             photoCollection.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    @objc func unsubscribe(_ sender:Any) {
+            imageFacade.removeSubscription(for: self)
+        }
     
     
 }
