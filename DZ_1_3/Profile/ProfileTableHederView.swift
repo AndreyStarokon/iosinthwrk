@@ -20,7 +20,7 @@ class ProfileHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     func setupViews() {
-       statusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+       
     }
      let profileImage: UIImageView = {
         let image =  UIImageView()
@@ -70,25 +70,15 @@ class ProfileHeaderView: UIView {
         return newStatus
     }()
   
-    let statusButton: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 16
-        button.backgroundColor = .systemBlue
-        button.setTitle("Status", for: .normal)
-        button.layer.shadowOffset = .init(width: 4, height: 4)
-        button.layer.shadowOpacity = 1.0;
-        button.layer.shadowRadius = 4;
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    @objc func buttonPressed() {
-        statusTextField.isHidden = false
+    private lazy var statusButton = CustomButton(title: "Status", color: .systemBlue, colorTitle: .white, borderWidth: 0.5, cornerRadius: 16) {
+        self.statusTextField.isHidden = false
     }
+   
 }
         
 extension ProfileHeaderView {
    func setConstraints() {
-       self.addSubview(statusButton)
+       self.addSubview(statusButton!)
        self.addSubview(profileImage)
        self.addSubview(statusText)
        self.addSubview(nameBar)
@@ -103,11 +93,11 @@ extension ProfileHeaderView {
        statusTextField.snp.makeConstraints { make in
            make.left.equalToSuperview().inset(150)
            make.right.equalToSuperview().inset(16)
-           make.bottom.equalTo(statusButton.snp_topMargin).inset(-20)
+           make.bottom.equalTo(statusButton!.snp_topMargin).inset(-20)
            make.height.equalTo(40)
        }
        
-       statusButton.snp.makeConstraints { make in
+       statusButton!.snp.makeConstraints { make in
            make.left.equalToSuperview().inset(16)
            make.right.equalToSuperview().inset(16)
            make.top.equalTo(profileImage.snp_bottomMargin).inset(-16)
@@ -116,7 +106,7 @@ extension ProfileHeaderView {
        
        statusText.snp.makeConstraints { make in
            make.top.equalTo(nameBar.snp_bottomMargin).inset(10)
-           make.bottom.equalTo(statusButton.snp_topMargin).inset(-34)
+           make.bottom.equalTo(statusButton!.snp_topMargin).inset(-34)
            make.right.equalToSuperview().inset(16)
            make.left.equalToSuperview().inset(150)
            

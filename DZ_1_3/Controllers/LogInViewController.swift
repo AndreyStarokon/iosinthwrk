@@ -61,23 +61,26 @@ class LogInViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
+    private lazy  var logInbatt = CustomButton(title: "Log In", color: UIColor("#4885CC"), colorTitle: .black, borderWidth: 1, cornerRadius: 16)
+    {
+        guard let loginName = self.mailText.text else { return }
+#if DEBUG
+let userService = TestUserService()
+#else
+let userService = CurrentUserService()
+guard userService.getUserName(loginName: loginName) != nil else { return }
+#endif
+let profile = ProfileViewController(loginName: loginName, user: userService)
+        self.navigationController?.pushViewController(profile, animated: true)
+        
+    }
     
-    private let logInButton: UIButton = {
-         let button = UIButton()
-         let backGroundColor = UIColor("#4885CC")
-         button.backgroundColor = backGroundColor
-         button.layer.cornerRadius = 16
-         button.setTitle("Log In", for: .normal)
-         button.translatesAutoresizingMaskIntoConstraints = false
-         return button
-     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         view.backgroundColor = .white
         setConsteraint()
-        logInButton.addTarget(self, action: #selector(logIn), for: .touchUpInside)
     }
     
     @objc func logIn () {
@@ -113,7 +116,7 @@ class LogInViewController: UIViewController {
         ])
    
           contentView.addSubview(logoImage)
-          contentView.addSubview(logInButton)
+          contentView.addSubview(logInbatt!)
           contentView.addSubview(mailText)
           contentView.addSubview(passText)
        
@@ -124,12 +127,12 @@ class LogInViewController: UIViewController {
            logoImage.heightAnchor.constraint(equalToConstant: 100 )
         ])
          NSLayoutConstraint.activate([
-           logInButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-           logInButton.topAnchor.constraint(equalTo: passText.bottomAnchor, constant: 16),
-           logInButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-           logInButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-           logInButton.heightAnchor.constraint(equalToConstant: 50 ),
-           logInButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            logInbatt!.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            logInbatt!.topAnchor.constraint(equalTo: passText.bottomAnchor, constant: 16),
+            logInbatt!.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            logInbatt!.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            logInbatt!.heightAnchor.constraint(equalToConstant: 50 ),
+            logInbatt!.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
        ])
        
          NSLayoutConstraint.activate([

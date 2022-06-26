@@ -21,16 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.makeKeyAndVisible()
             window?.rootViewController = tabBarVC
             let myFactory = MyLoginFactory()
+            let modelCheck = ModelCheck()
             
             let firstVC = LogInViewController()
             
             firstVC.delegate = myFactory.factory()
-            
             let firstNavController = UINavigationController(rootViewController: firstVC)
                   
             firstVC.tabBarItem = UITabBarItem(title: "pofile", image: UIImage(systemName: "person"), tag: 0)
-            
-            let secondVC = FeedViewController()
+            let secondVC = FeedViewController(modelCheck: modelCheck)
        
             let secondNavController = UINavigationController(rootViewController: secondVC)
             secondVC.tabBarItem = UITabBarItem(title: "feed", image: UIImage(systemName: "house"), tag: 1)
