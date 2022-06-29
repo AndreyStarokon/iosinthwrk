@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4744395B27D3D4A70006BF0E"
-               BuildableName = "DZ_1_3.app"
-               BlueprintName = "DZ_1_3"
-               ReferencedContainer = "container:DZ_1_3.xcodeproj">
+               BuildableName = "VK_app.app"
+               BlueprintName = "VK_app"
+               ReferencedContainer = "container:VK_app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "4733C929283D56F000501D66"
                BuildableName = "StorageServiceTests.xctest"
                BlueprintName = "StorageServiceTests"
-               ReferencedContainer = "container:DZ_1_3.xcodeproj">
+               ReferencedContainer = "container:VK_app.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4744395B27D3D4A70006BF0E"
-            BuildableName = "DZ_1_3.app"
-            BlueprintName = "DZ_1_3"
-            ReferencedContainer = "container:DZ_1_3.xcodeproj">
+            BuildableName = "VK_app.app"
+            BlueprintName = "VK_app"
+            ReferencedContainer = "container:VK_app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4744395B27D3D4A70006BF0E"
-            BuildableName = "DZ_1_3.app"
-            BlueprintName = "DZ_1_3"
-            ReferencedContainer = "container:DZ_1_3.xcodeproj">
+            BuildableName = "VK_app.app"
+            BlueprintName = "VK_app"
+            ReferencedContainer = "container:VK_app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

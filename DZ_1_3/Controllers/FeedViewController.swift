@@ -10,6 +10,8 @@ import UIKit
 
 
 class FeedViewController: UIViewController {
+    var coordinator: FeedCoordinator?
+        var output: FeedViewOutput?
 
     private let stackView: UIStackView = {
        let stack = UIStackView()
@@ -52,19 +54,25 @@ class FeedViewController: UIViewController {
     
     
     private let modelCheck: ModelCheck
-        init (modelCheck: ModelCheck) {
+        init (modelCheck: ModelCheck, output: FeedViewOutput) {
             self.modelCheck = modelCheck
+            self.output = output
+            
             super.init(nibName: nil, bundle: nil)
         }
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
     
+   
+       
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Лента"
+        output?.coordinator = self.coordinator
         setupLayer()
         NotificationCenter.default.addObserver(self,selector:#selector(redLable),name:Notification.Name.redLable,object: nil)
         NotificationCenter.default.addObserver(self,selector:#selector(greenLable),name:Notification.Name.greenLable, object: nil)
@@ -126,4 +134,10 @@ extension FeedViewController: UITextFieldDelegate {
 public extension NSNotification.Name {
     static let redLable = NSNotification.Name("redLable")
     static let greenLable = NSNotification.Name("greenLable")
+}
+
+protocol FeedViewOutput {
+    var coordinator: FeedCoordinator? { get set }
+
+    func showPost()
 }

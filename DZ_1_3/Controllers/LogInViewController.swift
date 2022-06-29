@@ -12,7 +12,7 @@ import UIKit
 class LogInViewController: UIViewController {
     
     var delegate: LoginViewControllerDelegate?
-    
+    var coordinator: ProfileCoordinator?
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)    // подписаться на уведомления

@@ -9,6 +9,8 @@ import UIKit
 
 
 class InfoViewController: UIViewController{
+    var coordinator: FeedCoordinator?
+    
     private lazy var button = CustomButton(title: "Allert", color: .black, colorTitle: .white, borderWidth: 1, cornerRadius: 10) {
         let alert = UIAlertController(title: "My Alert", message: "какой-то аллерт", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in

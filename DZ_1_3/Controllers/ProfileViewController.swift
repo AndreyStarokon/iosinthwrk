@@ -8,6 +8,8 @@ import UIKit
 import iOSIntPackage
 
 class ProfileViewController: UIViewController {
+    weak var coordinator: ProfileCoordinator?
+    
     let posts = Post.makePost()
     
     let header = ProfileHeaderView()
