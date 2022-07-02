@@ -42,6 +42,32 @@ class LogInViewController: UIViewController {
     private let mailText = MailTextField()
     private let passText = PasswordTextField()
     
+    var count = 0
+   private let timerLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+   private let spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
+    
+    private lazy var pickUpPassword: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .cyan
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Подобрать пароль", for: .normal)
+        button.layer.cornerRadius = 16
+        button.addTarget(self, action: #selector(pickUpPass), for: .touchUpInside)
+        return button
+        
+    }()
+    
+    
     private var scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +98,7 @@ guard userService.getUserName(loginName: loginName) != nil else { return }
 #endif
 let profile = ProfileViewController(loginName: loginName, user: userService)
         self.navigationController?.pushViewController(profile, animated: true)
-        
+       
     }
     
     
@@ -81,21 +107,28 @@ let profile = ProfileViewController(loginName: loginName, user: userService)
         navigationController?.isNavigationBarHidden = true
         view.backgroundColor = .white
         setConsteraint()
+        startTimer()
+        
     }
     
-    @objc func logIn () {
-                guard let loginName = mailText.text else { return }
-                #if DEBUG
-                let userService = TestUserService()
-                #else
-                let userService = CurrentUserService()
-                guard userService.getUserName(loginName: loginName) != nil else { return }
-                #endif
-        let profile = ProfileViewController(loginName: loginName, user: userService)
-                navigationController?.pushViewController(profile, animated: true)
-    }
+    private func startTimer() {
+            let timer = Timer(timeInterval: 1, repeats: true) { (_) in
+                self.timerLabel.text = "Вы находитесь на этом экране \(self.count) секунд(ы)"
+                self.count += 1
+                if self.count > 30 {
+                    self.timerLabel.textColor = .red
+                }
+            }
+            RunLoop.main.add(timer, forMode: .common)
+        }
     
-    
+    @objc func pickUpPass() {
+        self.spinner.startAnimating()
+            let operationQueue = OperationQueue()
+            operationQueue.qualityOfService = .background
+            let operation = BruteForceOperation(passField: passText, spinner: spinner)
+            operationQueue.addOperation(operation)
+        }
     private func setConsteraint(){
         view.addSubview(scrollView)
         NSLayoutConstraint.activate([
@@ -106,6 +139,7 @@ let profile = ProfileViewController(loginName: loginName, user: userService)
             ])
         
         scrollView.addSubview(contentView)
+        scrollView.addSubview(pickUpPassword)
         
         NSLayoutConstraint.activate([
           contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -119,6 +153,9 @@ let profile = ProfileViewController(loginName: loginName, user: userService)
           contentView.addSubview(logInbatt!)
           contentView.addSubview(mailText)
           contentView.addSubview(passText)
+          contentView.addSubview(timerLabel)
+          contentView.addSubview(spinner)
+        //  contentView.addSubview(pickUpPassword)
        
           NSLayoutConstraint.activate([
            logoImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -126,6 +163,20 @@ let profile = ProfileViewController(loginName: loginName, user: userService)
            logoImage.widthAnchor.constraint(equalToConstant: 100),
            logoImage.heightAnchor.constraint(equalToConstant: 100 )
         ])
+        
+        NSLayoutConstraint.activate([
+            timerLabel.topAnchor.constraint(equalTo: logInbatt!.bottomAnchor, constant: 100),
+         timerLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            timerLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+         timerLabel.heightAnchor.constraint(equalToConstant: 40 )
+      ])
+        
+        NSLayoutConstraint.activate([
+           spinner.centerYAnchor.constraint(equalTo: logInbatt!.bottomAnchor, constant: 20),
+           spinner.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+           
+      ])
+        
          NSLayoutConstraint.activate([
             logInbatt!.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             logInbatt!.topAnchor.constraint(equalTo: passText.bottomAnchor, constant: 16),
@@ -134,6 +185,14 @@ let profile = ProfileViewController(loginName: loginName, user: userService)
             logInbatt!.heightAnchor.constraint(equalToConstant: 50 ),
             logInbatt!.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
        ])
+        NSLayoutConstraint.activate([
+           pickUpPassword.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+           pickUpPassword.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 16),
+           pickUpPassword.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+           pickUpPassword.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+           pickUpPassword.heightAnchor.constraint(equalToConstant: 50 )
+          
+           ])
        
          NSLayoutConstraint.activate([
            mailText.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),

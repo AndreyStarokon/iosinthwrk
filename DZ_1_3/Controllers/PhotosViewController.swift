@@ -11,11 +11,12 @@ import iOSIntPackage
 
 var imagesSet: [UIImage] = []
 let imageFacade = ImagePublisherFacade()
-let setFasade: () = imageFacade.addImagesWithTimer(time: 1, repeat: 20, userImages: imagesSet)
+let setFasade: () = imageFacade.addImagesWithTimer(time: 1, repeat: 5, userImages: imagesSet)
 
 class PhotosViewController: UIViewController {
     
     private var imagesSet = [UIImage]()
+    private var imageProcessor = ImageProcessor()
     
     
     private lazy var photoCollection:UICollectionView = {
@@ -40,11 +41,14 @@ class PhotosViewController: UIViewController {
         for i in 1...20{
             let image = UIImage(named: "image\(i)")!
             imagesSet.append(image)
+            imageProcessor.processImagesOnThread(sourceImages: imagesSet, filter: .colorInvert, qos: .userInitiated) { _ in }
+            
         }
+        
         imageFacade.subscribe(self)
         imageFacade.addImagesWithTimer(time: 1, repeat: 20, userImages: imagesSet)
     }
-    
+
     private func layout(){
         view.addSubview(photoCollection)
         NSLayoutConstraint.activate([
@@ -83,6 +87,7 @@ extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifaer, for: indexPath) as! PhotosCollectionViewCell
         let image = imagesSet[indexPath.item]
+        
         cell.imageView.image = image
         return cell
     }

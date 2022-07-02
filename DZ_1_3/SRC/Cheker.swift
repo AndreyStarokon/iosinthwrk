@@ -17,9 +17,11 @@ struct Checker {
     }
     
     func check(userLogin: String?, userPass: String?) -> Bool {
-        if userLogin == login || userPass == password {
+        if userLogin == login && userPass == password {
             return true
         }
-        return false
+        else {
+            return false
+        }
     }
 }
