@@ -85,7 +85,7 @@ extension ProfileHeaderView {
        self.addSubview(statusTextField)
        
        profileImage.snp.makeConstraints { make in
-           make.right.equalToSuperview().inset(250)
+           make.right.equalToSuperview().inset(300)
            make.left.equalToSuperview().inset(16)
            make.top.equalToSuperview().inset(16)
            make.height.equalTo(120)
