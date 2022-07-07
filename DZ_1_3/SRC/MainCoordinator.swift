@@ -18,13 +18,13 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let profileVC = LogInViewController()
-        let profileNavigationController = UINavigationController(rootViewController: profileVC)
-        let profileCoordinator = ProfileCoordinator(navigationController: profileNavigationController, tabBarController: nil)
-        let profile = UITabBarItem(title: "Profile", image:UIImage(systemName: "person") , tag: 0)
-        profileVC.delegate = LoginInspector()
-        profileVC.coordinator = profileCoordinator
-        profileVC.tabBarItem = profile
+        let loginVC = LogInViewController()
+        let loginNavigationController = UINavigationController(rootViewController: loginVC)
+        let loginCoordinator = ProfileCoordinator(navigationController: loginNavigationController, tabBarController: nil)
+        let login = UITabBarItem(title: "Profile", image:UIImage(systemName: "person") , tag: 0)
+        loginVC.delegate = LoginInspector()
+        loginVC.coordinator = loginCoordinator
+        loginVC.tabBarItem = login
         
         let feedVC = FeedViewController(modelCheck: ModelCheck(), output: PostPresenter())
         let feedNavigationController = UINavigationController(rootViewController: feedVC)
@@ -32,6 +32,6 @@ class MainCoordinator: Coordinator {
         feedVC.coordinator = FeedCoordinator(navigationController: feedNavigationController, tabBarController: nil)
         feedVC.tabBarItem = feed
 
-        tabBarController?.viewControllers = [profileNavigationController, feedNavigationController]
+        tabBarController?.viewControllers = [loginNavigationController, feedNavigationController]
     }
 }

@@ -8,32 +8,31 @@ import UIKit
 import iOSIntPackage
 
 class ProfileViewController: UIViewController {
-    weak var coordinator: ProfileCoordinator?
-    
+    var coordinator: ProfileCoordinator?
     let posts = Post.makePost()
     
     let header = ProfileHeaderView()
     
-    private let user: UserService
+//    private let user: UserService
+//    
+//    init(loginName: String, user: UserService) {
+//            self.user = user
+//            super.init(nibName: nil, bundle: nil)
+//            #if DEBUG
+//            view.backgroundColor = .systemGray6
+//            #else
+//            view.backgroundColor = .red
+//            #endif
+//            
+//            guard let user = self.user.getUserName(loginName: loginName) else { return }
+//            header.nameBar.text = user.fullName
+//            header.profileImage.image = UIImage(named: user.avatar)
+//            header.statusTextField.text = user.status
+//        }
     
-    init(loginName: String, user: UserService) {
-            self.user = user
-            super.init(nibName: nil, bundle: nil)
-            #if DEBUG
-            view.backgroundColor = .systemGray6
-            #else
-            view.backgroundColor = .red
-            #endif
-            
-            guard let user = self.user.getUserName(loginName: loginName) else { return }
-            header.nameBar.text = user.fullName
-            header.profileImage.image = UIImage(named: user.avatar)
-            header.statusTextField.text = user.status
-        }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     private lazy var imagePublisher = ImagePublisherFacade()
     
     private lazy var headerTable: UITableView = {

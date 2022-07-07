@@ -49,8 +49,9 @@ class FeedViewController: UIViewController {
                 self.word.placeholder = "Введите пароль"
             }
         }
-    private lazy var buttonOne = CustomButton(title: "показать пост 1", color: .systemBlue, colorTitle: .black, borderWidth: 1, cornerRadius: 10){ self.navigationController?.pushViewController(PostViewController(), animated: true)}
-    private lazy var buttonTwo = CustomButton(title: "показать пост 2", color: .systemBlue, colorTitle: .black, borderWidth: 1, cornerRadius: 10){ self.navigationController?.pushViewController(PostViewController(), animated: true)}
+    private lazy var buttonOne = CustomButton(title: "показать пост 1", color: .systemBlue, colorTitle: .black, borderWidth: 1, cornerRadius: 10){ self.coordinator?.showPost() }
+    
+    private lazy var buttonTwo = CustomButton(title: "показать пост 2", color: .systemBlue, colorTitle: .black, borderWidth: 1, cornerRadius: 10){ self.coordinator?.showPost() }
     
     
     private let modelCheck: ModelCheck

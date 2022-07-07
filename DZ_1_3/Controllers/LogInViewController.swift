@@ -96,8 +96,7 @@ let userService = TestUserService()
 let userService = CurrentUserService()
 guard userService.getUserName(loginName: loginName) != nil else { return }
 #endif
-let profile = ProfileViewController(loginName: loginName, user: userService)
-        self.navigationController?.pushViewController(profile, animated: true)
+        self.coordinator?.loginButtonPressed()
        
     }
     

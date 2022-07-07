@@ -89,7 +89,6 @@ class PhotoViewCell: UIView {
         ])
         
         NSLayoutConstraint.activate([
-         //   imageOne.trailingAnchor.constraint(equalTo: imageTwo.leadingAnchor, constant: -8),
             imageOne.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             imageOne.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 12),
             imageOne.heightAnchor.constraint(equalToConstant: 70),
@@ -98,18 +97,15 @@ class PhotoViewCell: UIView {
         ])
         NSLayoutConstraint.activate([
             imageTwo.leadingAnchor.constraint(equalTo: imageOne.trailingAnchor, constant: 8),
-          //  imageTwo.trailingAnchor.constraint(equalTo: imageThree.leadingAnchor, constant: 8),
             imageTwo.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 12),
             imageTwo.heightAnchor.constraint(equalToConstant: 70),
             imageTwo.widthAnchor.constraint(equalToConstant: 85),
             imageTwo.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
         ])
         NSLayoutConstraint.activate([
-            imageThree.leadingAnchor.constraint(equalTo: imageTwo.trailingAnchor, constant: 8),
-          //  imageThree.trailingAnchor.constraint(equalTo: imageFour.leadingAnchor, constant: -8),
+            imageThree.leadingAnchor.constraint(equalTo: imageTwo.trailingAnchor, constant: 12),
             imageThree.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 12),
             imageThree.heightAnchor.constraint(equalToConstant: 70),
-           // imageThree.widthAnchor.constraint(equalToConstant: 85),
             imageThree.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
         ])
         NSLayoutConstraint.activate([

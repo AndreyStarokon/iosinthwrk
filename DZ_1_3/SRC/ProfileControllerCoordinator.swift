@@ -18,10 +18,10 @@ class ProfileCoordinator: Coordinator {
     }
     
     func loginButtonPressed() {
-        let profile = ProfileViewController(coder: NSCoder())
-        profile!.coordinator = self
-        navigationController?.pushViewController(profile!, animated: true)
-    }
+        let profileVc = ProfileViewController()
+            profileVc.coordinator = self
+        navigationController?.pushViewController(profileVc, animated: true)
+        }
     
     func photosSelected() {
         let photosViewController = PhotosViewController()
