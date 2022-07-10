@@ -12,29 +12,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
              
         var window: UIWindow?
-        
+        var coordinator: MainCoordinator?
+    
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+            let tabController = UITabBarController()
             
-            let tabBarVC = UITabBarController()
             window = UIWindow(frame: UIScreen.main.bounds)
-            window?.makeKeyAndVisible()
-            window?.rootViewController = tabBarVC
-            let firstVC = FeedViewController()
-            let firstNavController = UINavigationController(rootViewController: firstVC)
-                  
-            firstVC.tabBarItem = UITabBarItem(title: "feed", image: UIImage(systemName: "house"), tag: 0)
+            coordinator = MainCoordinator(navigationController: nil, tabBarController: tabController)
+                    coordinator?.start()
+
+                    window?.rootViewController = tabController
+                    window?.makeKeyAndVisible()
             
-            
-            let secondVC = ProfileViewController()
-       
-            let secondNavController = UINavigationController(rootViewController: secondVC)
-            secondVC.tabBarItem = UITabBarItem(title: "pofile", image: UIImage(systemName: "person"), tag: 1)
-            
-            tabBarVC.viewControllers = [firstNavController, secondNavController]
-           
-            
-                
-       
         return true
     }
 }
