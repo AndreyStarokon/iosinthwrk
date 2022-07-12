@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                     window?.rootViewController = tabController
                     window?.makeKeyAndVisible()
+            
+            let appConfig = AppConfiguration.random(people: URL(string: "https://swapi.dev/api/people/8")!, starships: URL(string: "https://swapi.dev/api/starships/3")!, planet: URL(string: "https://swapi.dev/api/planets/5")!)
+                   
+                   switch appConfig {
+                   case .people(let people):
+                       NetworkManager.dataTask(url: people)
+                   case .starships(let starsip):
+                       NetworkManager.dataTask(url: starsip)
+                   case .planets(let planet):
+                       NetworkManager.dataTask(url: planet)
+                   }
+                   
             
         return true
     }

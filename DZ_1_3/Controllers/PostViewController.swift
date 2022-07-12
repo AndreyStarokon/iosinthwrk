@@ -122,10 +122,11 @@ class PostViewController: UIViewController {
          }
     @objc func nextSong() {
         if position > 0 {
-            position = position - 1
+            position = position + 1
             Player.stop()
             configSongs()
-            
+            let song = songs[position]
+            self.songLabel.text = song.nameSong
         }
     }
     
@@ -134,7 +135,8 @@ class PostViewController: UIViewController {
             position = position + 1
             Player.stop()
             configSongs()
-            
+            let song = songs[position]
+            self.songLabel.text = song.nameSong
         }
     }
 
