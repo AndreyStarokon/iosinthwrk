@@ -13,6 +13,13 @@ class PostViewController: UIViewController {
     var coordinator: FeedCoordinator?
     var Player = AVAudioPlayer()
     
+    private var playerBackground: UIView = {
+        let background = UIView()
+        background.backgroundColor = .systemGray2
+        background.layer.cornerRadius = 16
+        background.translatesAutoresizingMaskIntoConstraints = false
+        return background
+    }()
     
     private lazy var playBtn: UIButton = {
         let button = UIButton()
@@ -120,9 +127,9 @@ class PostViewController: UIViewController {
     @objc func pauseButton(_ sender: Any) {
         Player.pause()
          }
-    @objc func nextSong() {
+    @objc func prevSong() {
         if position > 0 {
-            position = position + 1
+            position = position - 1
             Player.stop()
             configSongs()
             let song = songs[position]
@@ -130,13 +137,14 @@ class PostViewController: UIViewController {
         }
     }
     
-    @objc func prevSong() {
+    @objc func nextSong() {
         if position < (songs.count - 1) {
             position = position + 1
             Player.stop()
             configSongs()
             let song = songs[position]
             self.songLabel.text = song.nameSong
+            Player.play()
         }
     }
 
@@ -145,12 +153,20 @@ class PostViewController: UIViewController {
         navigationController?.present(infoVc, animated: true)
   }
     private func layout() {
-        view.addSubview(playBtn)
-        view.addSubview(stopBtn)
-        view.addSubview(pauseBtn)
-        view.addSubview(songLabel)
-        view.addSubview(nextBtn)
-        view.addSubview(previousBtn)
+        view.addSubview(playerBackground)
+        playerBackground.addSubview(playBtn)
+        playerBackground.addSubview(stopBtn)
+        playerBackground.addSubview(pauseBtn)
+        playerBackground.addSubview(songLabel)
+        playerBackground.addSubview(nextBtn)
+        playerBackground.addSubview(previousBtn)
+        
+        NSLayoutConstraint.activate([
+            playerBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            playerBackground.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            playerBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            playerBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -600)
+        ])
         
         NSLayoutConstraint.activate([
         playBtn.trailingAnchor.constraint(equalTo: pauseBtn.leadingAnchor, constant: -16),
@@ -159,13 +175,13 @@ class PostViewController: UIViewController {
         playBtn.widthAnchor.constraint(equalToConstant: 40)
         ])
         NSLayoutConstraint.activate([
-        previousBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 160),
+        previousBtn.leadingAnchor.constraint(equalTo: playerBackground.leadingAnchor, constant: 120),
         previousBtn.topAnchor.constraint(equalTo: playBtn.bottomAnchor, constant: 10),
         previousBtn.heightAnchor.constraint(equalToConstant: 40),
         previousBtn.widthAnchor.constraint(equalToConstant: 40)
         ])
         NSLayoutConstraint.activate([
-        nextBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -160),
+        nextBtn.trailingAnchor.constraint(equalTo: playerBackground.trailingAnchor, constant: -120),
         nextBtn.topAnchor.constraint(equalTo: playBtn.bottomAnchor, constant: 10),
         nextBtn.heightAnchor.constraint(equalToConstant: 40),
         nextBtn.widthAnchor.constraint(equalToConstant: 40)
@@ -178,14 +194,14 @@ class PostViewController: UIViewController {
         stopBtn.widthAnchor.constraint(equalToConstant: 40)
         ])
         NSLayoutConstraint.activate([
-        pauseBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        pauseBtn.centerXAnchor.constraint(equalTo: playerBackground.centerXAnchor),
         pauseBtn.topAnchor.constraint(equalTo: songLabel.bottomAnchor, constant: 10),
         pauseBtn.heightAnchor.constraint(equalToConstant: 40),
         pauseBtn.widthAnchor.constraint(equalToConstant: 40)
         ])
         NSLayoutConstraint.activate([
-        songLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        songLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+        songLabel.leadingAnchor.constraint(equalTo: playerBackground.leadingAnchor, constant: 175),
+        songLabel.topAnchor.constraint(equalTo: playerBackground.topAnchor, constant: 10),
         songLabel.heightAnchor.constraint(equalToConstant: 40),
         songLabel.widthAnchor.constraint(equalToConstant: 200)
         ])

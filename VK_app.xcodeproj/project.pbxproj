@@ -39,6 +39,7 @@
 		4736F8D728749BEC00C03044 /* Song4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4736F8D628749BEC00C03044 /* Song4.mp3 */; };
 		4736F8DB287DD93200C03044 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4736F8DA287DD93200C03044 /* NetworkManager.swift */; };
 		4736F8DD287DD98200C03044 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4736F8DC287DD98200C03044 /* AppConfiguration.swift */; };
+		4736F8E22884012F00C03044 /* PlanetJsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4736F8E12884012F00C03044 /* PlanetJsonModel.swift */; };
 		473A835B2843F903003B6511 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 473A835A2843F903003B6511 /* iOSIntPackage */; };
 		473CD04627FCAD2300F89EDD /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CD04527FCAD2300F89EDD /* PhotosTableViewCell.swift */; };
 		473CD04827FCAE1900F89EDD /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CD04727FCAE1900F89EDD /* PhotoViewCell.swift */; };
@@ -124,6 +125,7 @@
 		4736F8D628749BEC00C03044 /* Song4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Song4.mp3; sourceTree = "<group>"; };
 		4736F8DA287DD93200C03044 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4736F8DC287DD98200C03044 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		4736F8E12884012F00C03044 /* PlanetJsonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetJsonModel.swift; sourceTree = "<group>"; };
 		473CD04127F619F200F89EDD /* PostTableViewTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewTabCell.swift; sourceTree = "<group>"; };
 		473CD04327F61CF600F89EDD /* PostTableViewCell+Extencion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostTableViewCell+Extencion.swift"; sourceTree = "<group>"; };
 		473CD04527FCAD2300F89EDD /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
@@ -222,10 +224,18 @@
 				4736F8CA286B7E7B00C03044 /* PostPresenter.swift */,
 				4736F8CC286E200900C03044 /* BrutForce.swift */,
 				4736F8D028736AC100C03044 /* Songs.swift */,
-				4736F8DA287DD93200C03044 /* NetworkManager.swift */,
 				4736F8DC287DD98200C03044 /* AppConfiguration.swift */,
 			);
 			path = SRC;
+			sourceTree = "<group>";
+		};
+		4736F8E0288400D600C03044 /* NetworkServises */ = {
+			isa = PBXGroup;
+			children = (
+				4736F8DA287DD93200C03044 /* NetworkManager.swift */,
+				4736F8E12884012F00C03044 /* PlanetJsonModel.swift */,
+			);
+			path = NetworkServises;
 			sourceTree = "<group>";
 		};
 		4744395327D3D4A70006BF0E = {
@@ -253,6 +263,7 @@
 		4744395E27D3D4A70006BF0E /* DZ_1_3 */ = {
 			isa = PBXGroup;
 			children = (
+				4736F8E0288400D600C03044 /* NetworkServises */,
 				4736F8BB28620A3000C03044 /* SRC */,
 				4736F8BA286209AE00C03044 /* Controllers */,
 				47F1A7DA27DE3926009F22B5 /* Profile */,
@@ -534,6 +545,7 @@
 				4744396027D3D4A70006BF0E /* AppDelegate.swift in Sources */,
 				4736F8C9286B7C7E00C03044 /* ProfileControllerCoordinator.swift in Sources */,
 				4736F8DB287DD93200C03044 /* NetworkManager.swift in Sources */,
+				4736F8E22884012F00C03044 /* PlanetJsonModel.swift in Sources */,
 				4736F8B3284B4CA500C03044 /* CurrentUserService.swift in Sources */,
 				4733C942283EA7E000501D66 /* PostViewController.swift in Sources */,
 				47D34AAB27F241D7002F8680 /* PasswordText.swift in Sources */,
