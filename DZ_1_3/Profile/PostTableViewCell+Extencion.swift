@@ -110,6 +110,6 @@ class PostTableViewCell: UIView {
 
 
 extension UIView {
-    static let identifaer = String(describing: self)
+    static let identifaer = String(describing: UIView.self)
 }
 

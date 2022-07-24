@@ -48,7 +48,7 @@ class InfoViewController: UIViewController{
         super.viewDidLoad()
         view.backgroundColor = .white
         layout()
-        getData()
+//        getData()
         
     }
    override func viewDidLayoutSubviews() {

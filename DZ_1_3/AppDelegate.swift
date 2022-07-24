@@ -7,10 +7,12 @@
 
 import UIKit
 import Foundation
+import FirebaseCore
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+  
              
         var window: UIWindow?
         var coordinator: MainCoordinator?
@@ -18,10 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
             let tabController = UITabBarController()
             
+
+            
             window = UIWindow(frame: UIScreen.main.bounds)
             coordinator = MainCoordinator(navigationController: nil, tabBarController: tabController)
                     coordinator?.start()
-
+            FirebaseApp.configure()
                     window?.rootViewController = tabController
                     window?.makeKeyAndVisible()
             
@@ -39,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         return true
     }
+    
 }
  
 

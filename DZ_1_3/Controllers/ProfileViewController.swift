@@ -6,6 +6,8 @@
 //
 import UIKit
 import iOSIntPackage
+import Firebase
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
     var coordinator: ProfileCoordinator?
@@ -29,11 +31,23 @@ class ProfileViewController: UIViewController {
 //            header.profileImage.image = UIImage(named: user.avatar)
 //            header.statusTextField.text = user.status
 //        }
-    
+//    
 //    required init?(coder: NSCoder) {
 //        fatalError("init(coder:) has not been implemented")
 //    }
     private lazy var imagePublisher = ImagePublisherFacade()
+    
+    private lazy var exitButton: UIButton = {
+            let button = UIButton()
+            button.backgroundColor = .blue
+            button.setImage(UIImage(systemName: "clear"), for: .normal)
+            button.layer.cornerRadius = 24/2
+            button.layer.masksToBounds = true
+            button.clipsToBounds = true
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.addTarget(self, action: #selector(exitButtonPressed), for: .touchUpInside)
+            return button
+        }()
     
     private lazy var headerTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -60,15 +74,26 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .red
     }
     
-    
+    @objc private func exitButtonPressed() {
+           try! Auth.auth().signOut()
+           coordinator?.closeButtonPressed()
+       }
     
     private func setupConstraint() {
         view.addSubview(headerTable)
+        view.addSubview(exitButton)
         NSLayoutConstraint.activate([
             headerTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerTable.topAnchor.constraint(equalTo: view.topAnchor),
             headerTable.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
+        ])
+        NSLayoutConstraint.activate([
+                    exitButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+                    exitButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
+                    exitButton.widthAnchor.constraint(equalToConstant: 24),
+                    exitButton.heightAnchor.constraint(equalToConstant: 24)
         ])
     }
 }
