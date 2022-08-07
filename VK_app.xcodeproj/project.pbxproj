@@ -53,6 +53,8 @@
 		4744396927D3D4A90006BF0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4744396827D3D4A90006BF0E /* Assets.xcassets */; };
 		4744396C27D3D4A90006BF0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4744396A27D3D4A90006BF0E /* LaunchScreen.storyboard */; };
 		4744399427D4B9F20006BF0E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4744399327D4B9F20006BF0E /* ProfileViewController.swift */; };
+		479AE92928A00D2200F44B8D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 479AE92828A00D2200F44B8D /* Realm */; };
+		479AE92B28A00D2200F44B8D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 479AE92A28A00D2200F44B8D /* RealmSwift */; };
 		47D34AA727F062ED002F8680 /* MailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D34AA627F062ED002F8680 /* MailText.swift */; };
 		47D34AA927F23E21002F8680 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D34AA827F23E21002F8680 /* ColorExtension.swift */; };
 		47D34AAB27F241D7002F8680 /* PasswordText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D34AAA27F241D7002F8680 /* PasswordText.swift */; };
@@ -171,7 +173,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				479AE92928A00D2200F44B8D /* Realm in Frameworks */,
 				470BFCCD2889BB6600B18753 /* FirebaseDatabase in Frameworks */,
+				479AE92B28A00D2200F44B8D /* RealmSwift in Frameworks */,
 				473A835B2843F903003B6511 /* iOSIntPackage in Frameworks */,
 				4733C936283D56F000501D66 /* StorageService.framework in Frameworks */,
 				9B4BD1C89581F833EB691ED6 /* Pods_VK_app.framework in Frameworks */,
@@ -390,6 +394,8 @@
 				473A835A2843F903003B6511 /* iOSIntPackage */,
 				470BFCCA2889BB6600B18753 /* FirebaseAuth */,
 				470BFCCC2889BB6600B18753 /* FirebaseDatabase */,
+				479AE92828A00D2200F44B8D /* Realm */,
+				479AE92A28A00D2200F44B8D /* RealmSwift */,
 			);
 			productName = DZ_1_3;
 			productReference = 4744395C27D3D4A70006BF0E /* VK_app.app */;
@@ -429,6 +435,7 @@
 			packageReferences = (
 				473A83592843F903003B6511 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
 				470BFCC92889BB6600B18753 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				479AE92728A00D2200F44B8D /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 4744395D27D3D4A70006BF0E /* Products */;
 			projectDirPath = "";
@@ -944,6 +951,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		479AE92728A00D2200F44B8D /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -961,6 +976,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 473A83592843F903003B6511 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
+		};
+		479AE92828A00D2200F44B8D /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 479AE92728A00D2200F44B8D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		479AE92A28A00D2200F44B8D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 479AE92728A00D2200F44B8D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
