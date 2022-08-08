@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseCore
-import Firebase
+import Foundation
+
 
 
 
@@ -16,13 +15,17 @@ class LogInViewController: UIViewController {
     
     var delegate: LoginViewControllerDelegate?
     var coordinator: ProfileCoordinator?
-    var handle: AuthStateDidChangeListenerHandle?
+ 
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)    // подписаться на уведомления
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(kbdShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         nc.addObserver(self, selector: #selector(kbdHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let users = delegate?.checkUsers()
+                if users != nil && !users!.isEmpty {
+                    coordinator?.loginButtonPressed()
+                }
         
     }
     
@@ -135,17 +138,10 @@ class LogInViewController: UIViewController {
             operationQueue.addOperation(operation)
         }
     @objc private func loginButtonPressed() {
-           
-           delegate?.signIn(email: mailText.text!, pass: passText.text!, failure: coordinator!.showAlert)
-            
-           handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-        //   print("USERS EMAIL: \(user?.email ?? "введите e-mail")")
-        
-                                    if user != nil {
-                                        self.coordinator?.loginButtonPressed()
-                                    }
-                                }
-       Auth.auth().removeStateDidChangeListener(handle!)
+        if delegate!.creteUser(id: UUID().uuidString, email: mailText.text, pass: passText.text, failure: coordinator!.showAlert) {
+                    coordinator?.loginButtonPressed()
+                }
+          
         }
     private func setConsteraint(){
         view.addSubview(scrollView)
@@ -231,9 +227,8 @@ class LogInViewController: UIViewController {
 }
 
 protocol LoginViewControllerDelegate {
-    func checkLogin(userLogin: String) -> Bool
-    func checkPass(userPass: String) -> Bool
-    func signIn(email: String, pass: String, failure: @escaping (Errors) -> Void)
+    func creteUser(id: String, email: String?, pass: String?, failure: @escaping (Errors) -> Void) -> Bool
+    func checkUsers() -> [User]
 }
 
 extension LogInViewController: UITextFieldDelegate {
