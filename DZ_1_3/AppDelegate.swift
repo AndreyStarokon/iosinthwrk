@@ -13,7 +13,7 @@ import FirebaseAuth
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
-             
+        private(set) lazy var coreDataStack = CoreDataStack()
         var window: UIWindow?
         var coordinator: MainCoordinator?
     
@@ -23,26 +23,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             
             window = UIWindow(frame: UIScreen.main.bounds)
-            coordinator = MainCoordinator(navigationController: nil, tabBarController: tabController)
+            coordinator = MainCoordinator(navigationController: nil, tabBarController: tabController, stack: coreDataStack)
                     coordinator?.start()
-            FirebaseApp.configure()
+           
                     window?.rootViewController = tabController
                     window?.makeKeyAndVisible()
             
-            let appConfig = AppConfiguration.random(people: URL(string: "https://swapi.dev/api/people/8")!, starships: URL(string: "https://swapi.dev/api/starships/3")!, planet: URL(string: "https://swapi.dev/api/planets/5")!)
-                   
-                   switch appConfig {
-                   case .people(let people):
-                       NetworkManager.dataTask(url: people)
-                   case .starships(let starsip):
-                       NetworkManager.dataTask(url: starsip)
-                   case .planets(let planet):
-                       NetworkManager.dataTask(url: planet)
-                   }
+
                    
             
         return true
     }
+    func saveContext () {
+            let context = coreDataStack.persistentContainer.viewContext
+            if context.hasChanges {
+                do {
+                    try context.save()
+                } catch {
+                    // Replace this implementation with code to handle the error appropriately.
+                    // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    let nserror = error as NSError
+                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                }
+            }
+        }
     
 }
  

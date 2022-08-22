@@ -12,7 +12,7 @@ class LikesTableViewCell: UITableViewCell {
     var post: PostEntity? {
         didSet {
             authorLabel.text = post?.author
-            postImageView.image = UIImage(named: post?.image ?? "blue_pixel")
+            postImageView.image = UIImage(named: post?.image ?? "bitkoin")
             descriptionLabel.text = post?.descript
             likesLabel.text = "Likes: \(post?.likes ?? 0)"
             viewsLabel.text = "Views: \(post?.views ?? 0)"
