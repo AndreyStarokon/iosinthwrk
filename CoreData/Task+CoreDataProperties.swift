@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension Task {
+extension PostEntity {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Task> {
-        return NSFetchRequest<Task>(entityName: "Task")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<PostEntity> {
+        return NSFetchRequest<PostEntity>(entityName: "PostEntity")
     }
 
     @NSManaged public var author: String?

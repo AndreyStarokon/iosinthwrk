@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/ffhhqerg/Desktop/&#x443;&#x447;&#x435;&#x431;&#x430;/VK_app/CoreData/Task+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ffhhqerg/Desktop/&#x443;&#x447;&#x435;&#x431;&#x430;/VK_app/CoreData/Task+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:VK_app.xcodeproj">
    </FileRef>
    <FileRef

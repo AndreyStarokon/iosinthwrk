@@ -13,7 +13,9 @@ class ProfileViewController: UIViewController {
     var coordinator: ProfileCoordinator?
     
     private let stack: CoreDataStack
+    
     let header = ProfileHeaderView()
+    
     let posts = [Post(author: "тетя глаша",
                          description: "113",
                          image: "bitkoin",

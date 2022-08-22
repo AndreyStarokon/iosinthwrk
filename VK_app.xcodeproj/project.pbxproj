@@ -51,14 +51,14 @@
 		4744396927D3D4A90006BF0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4744396827D3D4A90006BF0E /* Assets.xcassets */; };
 		4744396C27D3D4A90006BF0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4744396A27D3D4A90006BF0E /* LaunchScreen.storyboard */; };
 		4744399427D4B9F20006BF0E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4744399327D4B9F20006BF0E /* ProfileViewController.swift */; };
+		476216AF28B4060600F09317 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476216AE28B4060600F09317 /* Task+CoreDataProperties.swift */; };
+		476216B128B4060A00F09317 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476216B028B4060A00F09317 /* Task+CoreDataClass.swift */; };
 		479AE92928A00D2200F44B8D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 479AE92828A00D2200F44B8D /* Realm */; };
 		479AE92B28A00D2200F44B8D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 479AE92A28A00D2200F44B8D /* RealmSwift */; };
 		479AE92D28AC0F0400F44B8D /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479AE92C28AC0F0400F44B8D /* LikesViewController.swift */; };
 		479AE93028AC0F7200F44B8D /* LikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479AE92F28AC0F7200F44B8D /* LikesTableViewCell.swift */; };
-		479AE93328AC126100F44B8D /* CoreDataStack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 479AE93128AC126100F44B8D /* CoreDataStack.xcdatamodeld */; };
+		479AE93328AC126100F44B8D /* VK_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 479AE93128AC126100F44B8D /* VK_app.xcdatamodeld */; };
 		479AE93528AC128800F44B8D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479AE93428AC128800F44B8D /* CoreDataStack.swift */; };
-		479AE93728AC12C100F44B8D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479AE93628AC12C100F44B8D /* Task.swift */; };
-		479AE93928AC12FB00F44B8D /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479AE93828AC12FB00F44B8D /* Properties.swift */; };
 		47D34AA727F062ED002F8680 /* MailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D34AA627F062ED002F8680 /* MailText.swift */; };
 		47D34AA927F23E21002F8680 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D34AA827F23E21002F8680 /* ColorExtension.swift */; };
 		47D34AAB27F241D7002F8680 /* PasswordText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D34AAA27F241D7002F8680 /* PasswordText.swift */; };
@@ -148,12 +148,12 @@
 		4744396B27D3D4A90006BF0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4744396D27D3D4A90006BF0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4744399327D4B9F20006BF0E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		476216AE28B4060600F09317 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataProperties.swift"; path = "/Users/ffhhqerg/Desktop/учеба/VK_app/CoreData/Task+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		476216B028B4060A00F09317 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataClass.swift"; path = "/Users/ffhhqerg/Desktop/учеба/VK_app/CoreData/Task+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		479AE92C28AC0F0400F44B8D /* LikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
 		479AE92F28AC0F7200F44B8D /* LikesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesTableViewCell.swift; sourceTree = "<group>"; };
 		479AE93228AC126100F44B8D /* CoreDataStack.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataStack.xcdatamodel; sourceTree = "<group>"; };
 		479AE93428AC128800F44B8D /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		479AE93628AC12C100F44B8D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		479AE93828AC12FB00F44B8D /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		47D34AA627F062ED002F8680 /* MailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailText.swift; sourceTree = "<group>"; };
 		47D34AA827F23E21002F8680 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		47D34AAA27F241D7002F8680 /* PasswordText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordText.swift; sourceTree = "<group>"; };
@@ -261,6 +261,7 @@
 		4744395327D3D4A70006BF0E = {
 			isa = PBXGroup;
 			children = (
+				479AE92E28AC0F2400F44B8D /* CoreData */,
 				4744395E27D3D4A70006BF0E /* DZ_1_3 */,
 				4733C922283D56F000501D66 /* StorageService */,
 				4733C930283D56F000501D66 /* StorageServiceTests */,
@@ -283,7 +284,6 @@
 		4744395E27D3D4A70006BF0E /* DZ_1_3 */ = {
 			isa = PBXGroup;
 			children = (
-				479AE92E28AC0F2400F44B8D /* CoreData */,
 				4736F8E0288400D600C03044 /* NetworkServises */,
 				4736F8BB28620A3000C03044 /* SRC */,
 				4736F8BA286209AE00C03044 /* Controllers */,
@@ -304,10 +304,10 @@
 		479AE92E28AC0F2400F44B8D /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				479AE93128AC126100F44B8D /* CoreDataStack.xcdatamodeld */,
+				479AE93128AC126100F44B8D /* VK_app.xcdatamodeld */,
+				476216B028B4060A00F09317 /* Task+CoreDataClass.swift */,
+				476216AE28B4060600F09317 /* Task+CoreDataProperties.swift */,
 				479AE93428AC128800F44B8D /* CoreDataStack.swift */,
-				479AE93628AC12C100F44B8D /* Task.swift */,
-				479AE93828AC12FB00F44B8D /* Properties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -568,13 +568,15 @@
 				473CD04A2801EFD800F89EDD /* PhotosViewController.swift in Sources */,
 				4736F8C1286B757F00C03044 /* MainCoordinator.swift in Sources */,
 				4736F8B528533BBD00C03044 /* Cheker.swift in Sources */,
+				476216AF28B4060600F09317 /* Task+CoreDataProperties.swift in Sources */,
 				47D34AA727F062ED002F8680 /* MailText.swift in Sources */,
 				4733C944283EA7E600501D66 /* PostTableViewCell+Extencion.swift in Sources */,
 				4744399427D4B9F20006BF0E /* ProfileViewController.swift in Sources */,
+				476216B128B4060A00F09317 /* Task+CoreDataClass.swift in Sources */,
 				4716EFEC27E25B78007935DF /* InfoViewController.swift in Sources */,
 				4736F8B728533C4300C03044 /* LoginInspector.swift in Sources */,
 				4736F8DD287DD98200C03044 /* AppConfiguration.swift in Sources */,
-				479AE93328AC126100F44B8D /* CoreDataStack.xcdatamodeld in Sources */,
+				479AE93328AC126100F44B8D /* VK_app.xcdatamodeld in Sources */,
 				4736F8B928574A9700C03044 /* LoginFactory.swift in Sources */,
 				479AE93028AC0F7200F44B8D /* LikesTableViewCell.swift in Sources */,
 				4716EFEE27EB9F30007935DF /* LogInViewController.swift in Sources */,
@@ -589,14 +591,12 @@
 				4736F8E22884012F00C03044 /* PlanetJsonModel.swift in Sources */,
 				4736F8B3284B4CA500C03044 /* CurrentUserService.swift in Sources */,
 				4733C942283EA7E000501D66 /* PostViewController.swift in Sources */,
-				479AE93728AC12C100F44B8D /* Task.swift in Sources */,
 				47D34AAB27F241D7002F8680 /* PasswordText.swift in Sources */,
 				47F1A7DC27DE4C46009F22B5 /* ProfileTableHederView.swift in Sources */,
 				4736F8C5286B78A200C03044 /* FeedControllerCoordinator.swift in Sources */,
 				4733C946283EA8F300501D66 /* StuctPost.swift in Sources */,
 				479AE92D28AC0F0400F44B8D /* LikesViewController.swift in Sources */,
 				4736F8BD28620A9100C03044 /* CustomButton.swift in Sources */,
-				479AE93928AC12FB00F44B8D /* Properties.swift in Sources */,
 				473CD04C2801F34400F89EDD /* PhotosCollectionViewCell.swift in Sources */,
 				47D34AA927F23E21002F8680 /* ColorExtension.swift in Sources */,
 				4736F8C3286B75E500C03044 /* Coordinator.swift in Sources */,
@@ -1012,13 +1012,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		479AE93128AC126100F44B8D /* CoreDataStack.xcdatamodeld */ = {
+		479AE93128AC126100F44B8D /* VK_app.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				479AE93228AC126100F44B8D /* CoreDataStack.xcdatamodel */,
 			);
 			currentVersion = 479AE93228AC126100F44B8D /* CoreDataStack.xcdatamodel */;
-			path = CoreDataStack.xcdatamodeld;
+			path = VK_app.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
