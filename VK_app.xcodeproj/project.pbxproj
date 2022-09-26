@@ -51,6 +51,7 @@
 		4744396927D3D4A90006BF0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4744396827D3D4A90006BF0E /* Assets.xcassets */; };
 		4744396C27D3D4A90006BF0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4744396A27D3D4A90006BF0E /* LaunchScreen.storyboard */; };
 		4744399427D4B9F20006BF0E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4744399327D4B9F20006BF0E /* ProfileViewController.swift */; };
+		475CDF7628E0890500DDAFE7 /* GeoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475CDF7528E0890500DDAFE7 /* GeoViewController.swift */; };
 		476216AF28B4060600F09317 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476216AE28B4060600F09317 /* Task+CoreDataProperties.swift */; };
 		476216B128B4060A00F09317 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476216B028B4060A00F09317 /* Task+CoreDataClass.swift */; };
 		479AE92928A00D2200F44B8D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 479AE92828A00D2200F44B8D /* Realm */; };
@@ -148,6 +149,7 @@
 		4744396B27D3D4A90006BF0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4744396D27D3D4A90006BF0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4744399327D4B9F20006BF0E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		475CDF7528E0890500DDAFE7 /* GeoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoViewController.swift; sourceTree = "<group>"; };
 		476216AE28B4060600F09317 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataProperties.swift"; path = "/Users/ffhhqerg/Desktop/учеба/VK_app/CoreData/Task+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		476216B028B4060A00F09317 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataClass.swift"; path = "/Users/ffhhqerg/Desktop/учеба/VK_app/CoreData/Task+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		479AE92C28AC0F0400F44B8D /* LikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 		4744395327D3D4A70006BF0E = {
 			isa = PBXGroup;
 			children = (
+				475CDF7428E088BF00DDAFE7 /* Geolocation */,
 				479AE92E28AC0F2400F44B8D /* CoreData */,
 				4744395E27D3D4A70006BF0E /* DZ_1_3 */,
 				4733C922283D56F000501D66 /* StorageService */,
@@ -299,6 +302,14 @@
 				4744396A27D3D4A90006BF0E /* LaunchScreen.storyboard */,
 			);
 			path = DZ_1_3;
+			sourceTree = "<group>";
+		};
+		475CDF7428E088BF00DDAFE7 /* Geolocation */ = {
+			isa = PBXGroup;
+			children = (
+				475CDF7528E0890500DDAFE7 /* GeoViewController.swift */,
+			);
+			path = Geolocation;
 			sourceTree = "<group>";
 		};
 		479AE92E28AC0F2400F44B8D /* CoreData */ = {
@@ -602,6 +613,7 @@
 				4736F8C3286B75E500C03044 /* Coordinator.swift in Sources */,
 				473CD04827FCAE1900F89EDD /* PhotoViewCell.swift in Sources */,
 				4736F8BF2866E29800C03044 /* ModelCheck.swift in Sources */,
+				475CDF7628E0890500DDAFE7 /* GeoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,8 +51,8 @@ class ProfileViewController: UIViewController {
     
     private lazy var exitButton: UIButton = {
             let button = UIButton()
-            button.backgroundColor = .blue
-            button.setImage(UIImage(systemName: "clear"), for: .normal)
+            button.backgroundColor = .systemRed
+            button.setTitle("MAPVIEW", for: .normal)
             button.layer.cornerRadius = 24/2
             button.layer.masksToBounds = true
             button.clipsToBounds = true
@@ -87,8 +87,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func exitButtonPressed() {
-           try! Auth.auth().signOut()
-           coordinator?.closeButtonPressed()
+        navigationController?.pushViewController(GeoViewController(), animated: true)
        }
     
     private func setupConstraint() {
@@ -102,10 +101,10 @@ class ProfileViewController: UIViewController {
             
         ])
         NSLayoutConstraint.activate([
-                    exitButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
-                    exitButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
-                    exitButton.widthAnchor.constraint(equalToConstant: 24),
-                    exitButton.heightAnchor.constraint(equalToConstant: 24)
+            exitButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            exitButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
+            exitButton.widthAnchor.constraint(equalToConstant: 104),
+            exitButton.heightAnchor.constraint(equalToConstant: 24)
         ])
     }
 }
