@@ -17,22 +17,22 @@ class ProfileViewController: UIViewController {
     let header = ProfileHeaderView()
     
     let posts = [Post(author: "тетя глаша",
-                         description: "113",
+                         description: NSLocalizedString("post", comment: "tired"),
                          image: "bitkoin",
                          likes: 100500,
                          views: 124567),
                     Post(author: "виталик",
-                         description: "цена достигла 3500",
+                         description: NSLocalizedString("post3", comment: "preis"),
                          image: "etherium",
                          likes: 1276543,
                          views: 8765433),
                     Post(author: "jhon",
-                         description: "В гречке содержится много витаминов и полезных минералов: В1, В2, В6, фолиевая кислота, кальций, магний, железо, калий. К положительным свойствам относится и то, что эта крупа понижает уровень холестерина в крови, чистит печень от токсинов, обеспечивает правильную работу кишечника, улучшает процесс кроветворения и, как ни странно, борется с бессонницей».",
+                         description: NSLocalizedString("пост1", comment: "гречка"),
                          image: "гречка",
                          likes: 987654,
                          views: 1224566),
                     Post(author: "obert",
-                         description: "Buy PIR detector",
+                         description: NSLocalizedString("post2", comment: "PIR"),
                          image: "123",
                          likes: 666,
                          views: 1245698765)
@@ -52,7 +52,7 @@ class ProfileViewController: UIViewController {
     private lazy var exitButton: UIButton = {
             let button = UIButton()
             button.backgroundColor = .systemRed
-            button.setTitle("MAPVIEW", for: .normal)
+            button.setTitle(NSLocalizedString("MAPVIEW", comment: "button map"), for: .normal)
             button.layer.cornerRadius = 24/2
             button.layer.masksToBounds = true
             button.clipsToBounds = true
