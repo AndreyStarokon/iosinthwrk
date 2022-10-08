@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Foundation
+
 
 
 
@@ -13,12 +15,18 @@ class LogInViewController: UIViewController {
     
     var delegate: LoginViewControllerDelegate?
     var coordinator: ProfileCoordinator?
+ 
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)    // подписаться на уведомления
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(kbdShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         nc.addObserver(self, selector: #selector(kbdHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let users = delegate?.checkUsers()
+                if users != nil && !users!.isEmpty {
+                    coordinator?.loginButtonPressed()
+                }
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -26,7 +34,13 @@ class LogInViewController: UIViewController {
         let nc = NotificationCenter.default
         nc.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         nc.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+        }
+       
+
+    override func viewWillDisappear(_ animated: Bool) {
+                    super.viewWillDisappear(animated)
+        }
+    
     
     @objc private func kbdShow(notification: NSNotification) {
         if let kbdSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -89,14 +103,8 @@ class LogInViewController: UIViewController {
     }()
     private lazy  var logInbatt = CustomButton(title: "Log In", color: UIColor("#4885CC"), colorTitle: .black, borderWidth: 1, cornerRadius: 16)
     {
-        guard let loginName = self.mailText.text else { return }
-#if DEBUG
-let userService = TestUserService()
-#else
-let userService = CurrentUserService()
-guard userService.getUserName(loginName: loginName) != nil else { return }
-#endif
-        self.coordinator?.loginButtonPressed()
+        
+        self.loginButtonPressed()
        
     }
     
@@ -121,12 +129,19 @@ guard userService.getUserName(loginName: loginName) != nil else { return }
             RunLoop.main.add(timer, forMode: .common)
         }
     
+    
     @objc func pickUpPass() {
         self.spinner.startAnimating()
             let operationQueue = OperationQueue()
             operationQueue.qualityOfService = .background
             let operation = BruteForceOperation(passField: passText, spinner: spinner)
             operationQueue.addOperation(operation)
+        }
+    @objc private func loginButtonPressed() {
+        if delegate!.creteUser(id: UUID().uuidString, email: mailText.text, pass: passText.text, failure: coordinator!.showAlert) {
+                    coordinator?.loginButtonPressed()
+                }
+          
         }
     private func setConsteraint(){
         view.addSubview(scrollView)
@@ -154,7 +169,6 @@ guard userService.getUserName(loginName: loginName) != nil else { return }
           contentView.addSubview(passText)
           contentView.addSubview(timerLabel)
           contentView.addSubview(spinner)
-        //  contentView.addSubview(pickUpPassword)
        
           NSLayoutConstraint.activate([
            logoImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -213,8 +227,8 @@ guard userService.getUserName(loginName: loginName) != nil else { return }
 }
 
 protocol LoginViewControllerDelegate {
-    func checkLogin(userLogin: String) -> Bool
-    func checkPass(userPass: String) -> Bool
+    func creteUser(id: String, email: String?, pass: String?, failure: @escaping (Errors) -> Void) -> Bool
+    func checkUsers() -> [User]
 }
 
 extension LogInViewController: UITextFieldDelegate {
