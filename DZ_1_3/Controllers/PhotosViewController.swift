@@ -23,7 +23,7 @@ class PhotosViewController: UIViewController {
       let layout = UICollectionViewFlowLayout()
         let photoCollection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         photoCollection.translatesAutoresizingMaskIntoConstraints = false
-        photoCollection.backgroundColor = .white
+        photoCollection.backgroundColor = .backgroundColor
         photoCollection.delegate = self
         photoCollection.dataSource = self
         photoCollection.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.identifaer)

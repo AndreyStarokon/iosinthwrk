@@ -22,7 +22,7 @@ weak var delegate: PostTableCellDelegate?
    private let authorLabel: UILabel = {
        let label = UILabel()
        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-       label.textColor = .black
+       label.textColor = .textCollor
        label.numberOfLines = 1
        label.translatesAutoresizingMaskIntoConstraints = false
        return label
@@ -31,14 +31,14 @@ weak var delegate: PostTableCellDelegate?
    private let postImageView: UIImageView = {
        let imageView = UIImageView()
        imageView.contentMode = .scaleAspectFit
-       imageView.backgroundColor = .black
+       imageView.backgroundColor = .backgroundColor
        imageView.translatesAutoresizingMaskIntoConstraints = false
        return imageView
    }()
    
    private let descriptionLabel: UILabel = {
        let label = UILabel()
-       label.textColor = .darkGray
+       label.textColor = .textCollor
        label.numberOfLines = 0
        label.translatesAutoresizingMaskIntoConstraints = false
        return label
@@ -46,21 +46,21 @@ weak var delegate: PostTableCellDelegate?
    
    private let likesLabel: UILabel = {
        let label = UILabel()
-       label.textColor = .black
+       label.textColor = .textCollor
        label.translatesAutoresizingMaskIntoConstraints = false
        return label
    }()
    
    private let viewsLabel: UILabel = {
        let label = UILabel()
-       label.textColor = .black
+       label.textColor = .textCollor
        label.translatesAutoresizingMaskIntoConstraints = false
        return label
    }()
    
    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
        super.init(style: style, reuseIdentifier: reuseIdentifier)
-       backgroundColor = .white
+       backgroundColor = .backgroundColor
        setupViews()
    }
    

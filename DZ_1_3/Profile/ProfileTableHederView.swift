@@ -46,7 +46,7 @@ class ProfileHeaderView: UIView {
         text.text = "хипстер кот"
         text.font = .systemFont(ofSize: 16, weight: .bold)
         text.translatesAutoresizingMaskIntoConstraints = false
-        text.textColor = .black
+        text.textColor = .textCollor
         
         return text
     }()

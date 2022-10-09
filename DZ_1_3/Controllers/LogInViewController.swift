@@ -72,7 +72,7 @@ class LogInViewController: UIViewController {
     
     private lazy var pickUpPassword: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .cyan
+        button.backgroundColor = .buttonColor
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Подобрать пароль", for: .normal)
         button.layer.cornerRadius = 16
@@ -84,6 +84,7 @@ class LogInViewController: UIViewController {
     
     private var scrollView: UIScrollView = {
         let scroll = UIScrollView()
+        scroll.backgroundColor = .backgroundColor
         scroll.translatesAutoresizingMaskIntoConstraints = false
         return scroll
     }()
@@ -101,7 +102,7 @@ class LogInViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    private lazy  var logInbatt = CustomButton(title: "Log In", color: UIColor("#4885CC"), colorTitle: .black, borderWidth: 1, cornerRadius: 16)
+    private lazy  var logInbatt = CustomButton(title: "Log In", color: .buttonColor, colorTitle: .black, borderWidth: 1, cornerRadius: 16)
     {
         
         self.loginButtonPressed()

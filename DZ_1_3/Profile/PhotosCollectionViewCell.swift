@@ -10,7 +10,7 @@ import UIKit
 class PhotosCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super .init(frame: frame)
-        backgroundColor = .green
+        backgroundColor = .backgroundColor
         setupLayouts()
         
     }

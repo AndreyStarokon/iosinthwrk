@@ -59,7 +59,7 @@ class PhotoViewCell: UIView {
     }()
     private let arrowButton: UIButton = {
         let arrow = UIButton()
-        arrow.setTitleColor(.black, for: .normal)
+        arrow.setTitleColor(.textCollor, for: .normal)
         arrow.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .regular)
         arrow.setTitle("→", for: .normal)
         arrow.translatesAutoresizingMaskIntoConstraints = false

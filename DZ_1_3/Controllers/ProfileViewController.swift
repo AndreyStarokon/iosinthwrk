@@ -51,7 +51,7 @@ class ProfileViewController: UIViewController {
     
     private lazy var exitButton: UIButton = {
             let button = UIButton()
-            button.backgroundColor = .systemRed
+            button.backgroundColor = .buttonColor
             button.setTitle("MAPVIEW", for: .normal)
             button.layer.cornerRadius = 24/2
             button.layer.masksToBounds = true
@@ -63,11 +63,7 @@ class ProfileViewController: UIViewController {
     
     private lazy var headerTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
-        #if DEBUG
-        table.backgroundColor = .red
-        #else
-        table.backgroundColor = .systemGray6
-        #endif
+        table.backgroundColor = .backgroundColor
         table.dataSource = self
         table.delegate = self
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +79,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         setupConstraint()
-        view.backgroundColor = .red
+        view.backgroundColor = .backgroundColor
     }
     
     @objc private func exitButtonPressed() {
