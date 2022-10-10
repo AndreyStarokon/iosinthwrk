@@ -10,6 +10,7 @@
 		470BFCC82889B2F700B18753 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 470BFCC72889B2F700B18753 /* GoogleService-Info.plist */; };
 		470BFCCB2889BB6600B18753 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 470BFCCA2889BB6600B18753 /* FirebaseAuth */; };
 		470BFCCD2889BB6600B18753 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 470BFCCC2889BB6600B18753 /* FirebaseDatabase */; };
+		4716C14B28F493CB00C051A0 /* LocalAutorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716C14A28F493CB00C051A0 /* LocalAutorizationService.swift */; };
 		4716EFEC27E25B78007935DF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716EFEB27E25B78007935DF /* InfoViewController.swift */; };
 		4716EFEE27EB9F30007935DF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716EFED27EB9F30007935DF /* LogInViewController.swift */; };
 		4733C925283D56F000501D66 /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = 4733C924283D56F000501D66 /* StorageService.docc */; };
@@ -108,6 +109,7 @@
 /* Begin PBXFileReference section */
 		1ED73F64DA3DEAE2DF08332F /* Pods-VK_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK_app.release.xcconfig"; path = "Target Support Files/Pods-VK_app/Pods-VK_app.release.xcconfig"; sourceTree = "<group>"; };
 		470BFCC72889B2F700B18753 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4716C14A28F493CB00C051A0 /* LocalAutorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAutorizationService.swift; sourceTree = "<group>"; };
 		4716EFE727E25AE3007935DF /* StuctPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuctPost.swift; sourceTree = "<group>"; };
 		4716EFE927E25B43007935DF /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		4716EFEB27E25B78007935DF /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				4736F8CC286E200900C03044 /* BrutForce.swift */,
 				4736F8D028736AC100C03044 /* Songs.swift */,
 				4736F8DC287DD98200C03044 /* AppConfiguration.swift */,
+				4716C14A28F493CB00C051A0 /* LocalAutorizationService.swift */,
 			);
 			path = SRC;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				4736F8B528533BBD00C03044 /* Cheker.swift in Sources */,
 				476216AF28B4060600F09317 /* Task+CoreDataProperties.swift in Sources */,
 				47D34AA727F062ED002F8680 /* MailText.swift in Sources */,
+				4716C14B28F493CB00C051A0 /* LocalAutorizationService.swift in Sources */,
 				4733C944283EA7E600501D66 /* PostTableViewCell+Extencion.swift in Sources */,
 				4744399427D4B9F20006BF0E /* ProfileViewController.swift in Sources */,
 				476216B128B4060A00F09317 /* Task+CoreDataClass.swift in Sources */,

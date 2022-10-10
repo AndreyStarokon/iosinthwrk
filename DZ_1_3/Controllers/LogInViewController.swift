@@ -81,6 +81,21 @@ class LogInViewController: UIViewController {
         
     }()
     
+    private lazy var biometricAuthButton: UIButton = {
+           let button = UIButton(type: .system)
+           button.backgroundColor = .lightGray
+           button.setTitle("Biometric \nAuth", for: .normal)
+           button.titleLabel?.lineBreakMode = .byWordWrapping
+           button.titleLabel?.textAlignment = .center
+           button.setTitleColor(.white, for: .normal)
+           button.layer.cornerRadius = 10
+           button.layer.masksToBounds = false
+           button.clipsToBounds = true
+           button.addTarget(self, action: #selector(biometricAuthButtonPressed), for: .touchUpInside)
+           button.translatesAutoresizingMaskIntoConstraints = false
+           return button
+       }()
+    
     
     private var scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -129,7 +144,18 @@ class LogInViewController: UIViewController {
             }
             RunLoop.main.add(timer, forMode: .common)
         }
-    
+    @objc func biometricAuthButtonPressed() {
+            print("Нажали кнопку биометрической авторизации")
+            LocalAuthorizationService().authorizeIfPossible { [self] result in
+                if result {
+                    print("Биометрическая авторизация успешна")
+                    coordinator?.loginButtonPressed()
+                } else {
+                    print("Биометрическая авторизация не успешна")
+                    
+                }
+            }
+        }
     
     @objc func pickUpPass() {
         self.spinner.startAnimating()
@@ -151,80 +177,87 @@ class LogInViewController: UIViewController {
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-            ])
+        ])
         
         scrollView.addSubview(contentView)
         scrollView.addSubview(pickUpPassword)
+        scrollView.addSubview(biometricAuthButton)
         
         NSLayoutConstraint.activate([
-          contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-          contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-          contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-          contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-          contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
-   
-          contentView.addSubview(logoImage)
-          contentView.addSubview(logInbatt!)
-          contentView.addSubview(mailText)
-          contentView.addSubview(passText)
-          contentView.addSubview(timerLabel)
-          contentView.addSubview(spinner)
-       
-          NSLayoutConstraint.activate([
-           logoImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-           logoImage.centerYAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
-           logoImage.widthAnchor.constraint(equalToConstant: 100),
-           logoImage.heightAnchor.constraint(equalToConstant: 100 )
+        
+        contentView.addSubview(logoImage)
+        contentView.addSubview(logInbatt!)
+        contentView.addSubview(mailText)
+        contentView.addSubview(passText)
+        contentView.addSubview(timerLabel)
+        contentView.addSubview(spinner)
+        
+        NSLayoutConstraint.activate([
+            logoImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            logoImage.centerYAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
+            logoImage.widthAnchor.constraint(equalToConstant: 100),
+            logoImage.heightAnchor.constraint(equalToConstant: 100 )
         ])
         
         NSLayoutConstraint.activate([
             timerLabel.topAnchor.constraint(equalTo: logInbatt!.bottomAnchor, constant: 100),
-         timerLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            timerLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             timerLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-         timerLabel.heightAnchor.constraint(equalToConstant: 40 )
-      ])
+            timerLabel.heightAnchor.constraint(equalToConstant: 40 )
+        ])
         
         NSLayoutConstraint.activate([
-           spinner.centerYAnchor.constraint(equalTo: logInbatt!.bottomAnchor, constant: 20),
-           spinner.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-           
-      ])
+            spinner.centerYAnchor.constraint(equalTo: logInbatt!.bottomAnchor, constant: 20),
+            spinner.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            
+        ])
         
-         NSLayoutConstraint.activate([
+        NSLayoutConstraint.activate([
             logInbatt!.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             logInbatt!.topAnchor.constraint(equalTo: passText.bottomAnchor, constant: 16),
             logInbatt!.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             logInbatt!.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             logInbatt!.heightAnchor.constraint(equalToConstant: 50 ),
             logInbatt!.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-       ])
+        ])
         NSLayoutConstraint.activate([
-           pickUpPassword.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-           pickUpPassword.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 16),
-           pickUpPassword.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-           pickUpPassword.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-           pickUpPassword.heightAnchor.constraint(equalToConstant: 50 )
-          
-           ])
-       
-         NSLayoutConstraint.activate([
-           mailText.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-           mailText.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 120),
-           mailText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-           mailText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-           mailText.heightAnchor.constraint(equalToConstant: 40 )
-           ])
-         NSLayoutConstraint.activate([
-           passText.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-           passText.topAnchor.constraint(equalTo: mailText.bottomAnchor, constant: 0),
-           passText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-           passText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-           passText.heightAnchor.constraint(equalToConstant: 40 )
-           ])
+            pickUpPassword.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            pickUpPassword.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 16),
+            pickUpPassword.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            pickUpPassword.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            pickUpPassword.heightAnchor.constraint(equalToConstant: 50 )
+            
+        ])
+        
+        NSLayoutConstraint.activate([
+            mailText.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            mailText.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 120),
+            mailText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            mailText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            mailText.heightAnchor.constraint(equalToConstant: 40 )
+        ])
+        NSLayoutConstraint.activate([
+            passText.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            passText.topAnchor.constraint(equalTo: mailText.bottomAnchor, constant: 0),
+            passText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            passText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            passText.heightAnchor.constraint(equalToConstant: 40 )
+        ])
+        
+        NSLayoutConstraint.activate([
+            biometricAuthButton.heightAnchor.constraint(equalToConstant: 50),
+            biometricAuthButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            biometricAuthButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            biometricAuthButton.topAnchor.constraint(equalTo: logInbatt!.bottomAnchor, constant: 50)
+        ])
+        
     }
-
-
 }
 
 protocol LoginViewControllerDelegate {

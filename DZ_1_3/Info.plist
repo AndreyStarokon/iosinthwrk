@@ -6,5 +6,7 @@
 	<string>разрешить</string>
 	<key>CFBundleIdentifier</key>
 	<string></string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>покажите лицо</string>
 </dict>
 </plist>
