@@ -19,7 +19,7 @@ class PasswordTextField: UITextField, UITextFieldDelegate {
     
     private func configure() {
         
-        backgroundColor = .white
+        backgroundColor = .fieldColor
         layer.cornerRadius = 10
         layer.borderWidth = 0.5
         layer.borderColor = UIColor.lightGray.cgColor

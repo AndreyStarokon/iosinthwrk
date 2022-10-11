@@ -23,7 +23,7 @@ class MailTextField: UITextField, UITextFieldDelegate {
     
     
     private func configure() {
-        backgroundColor = .white
+        backgroundColor = .fieldColor
         layer.cornerRadius = 10
         layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         layer.borderWidth = 0.5

@@ -6,110 +6,114 @@
 //
 
 import UIKit
-import iOSIntPackage
-class PostTableViewCell: UIView {
-    override init(frame: CGRect) {
-        super .init(frame: frame)
-        setupLayout()
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    func setupCell(post: Post, numb: Int) {
-        let imageFilter: ColorFilter
-        switch numb {
-        case 0:
-            imageFilter = .colorInvert
-        case 1:
-            imageFilter = .noir
-        case 3:
-            imageFilter = .gaussianBlur(radius: 3.0)
-        default:
-            imageFilter = .chrome
-        }
-        
-        var image: (UIImage?)
-        ImageProcessor().processImage(sourceImage: post.image, filter: imageFilter) { imageFilter in image = imageFilter}
-        postImage.image = image
-        postViews.text = "Views:\(post.views)"
-        postLikes.text = "Likes:\(post.likes)"
-        authorText.text = post.author
-        descriptionText.text = post.description
-    }
-
-    private let postLikes: UILabel = {
-        let likes = UILabel()
-        likes.translatesAutoresizingMaskIntoConstraints = false
-        return likes
-    }()
-    private let postViews: UILabel = {
-        let views = UILabel()
-        views.translatesAutoresizingMaskIntoConstraints = false
-        return views
-    }()
-    
-    private let authorText: UILabel = {
-        let author = UILabel()
-        author.translatesAutoresizingMaskIntoConstraints = false
-        return author
-    }()
-    private let descriptionText: UILabel = {
-        let description = UILabel()
-        description.textColor = .systemGray
-        description.translatesAutoresizingMaskIntoConstraints = false
-        description.numberOfLines = 0
-        return description
-    }()
-    private let postImage: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
+class PostTableViewCell: UITableViewCell {
+weak var delegate: PostTableCellDelegate?
    
-    private func setupLayout() {
-        addSubview(authorText)
-        addSubview(postImage)
-        addSubview(postLikes)
-        addSubview(postViews)
-        addSubview(descriptionText)
-        NSLayoutConstraint.activate([
-            authorText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            authorText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            authorText.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            authorText.heightAnchor.constraint(equalToConstant: 20 )
-        ])
-        NSLayoutConstraint.activate([
-            postImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            postImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            postImage.topAnchor.constraint(equalTo: authorText.bottomAnchor, constant: 10),
-            postImage.heightAnchor.constraint(equalToConstant: 350)
-        ])
-        NSLayoutConstraint.activate([
-            postLikes.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -160),
-            postLikes.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            postLikes.topAnchor.constraint(equalTo: descriptionText.bottomAnchor, constant: 10),
-            postLikes.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
-         //   postLikes.heightAnchor.constraint(equalToConstant: 20)
-        ])
-        NSLayoutConstraint.activate([
-            postViews.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            postViews.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10),
-        //    postViews.heightAnchor.constraint(equalToConstant: 20),
-            postViews.topAnchor.constraint(equalTo: descriptionText.bottomAnchor, constant: -10)
-        ])
-        NSLayoutConstraint.activate([
-            descriptionText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            descriptionText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-      //      descriptionText.bottomAnchor.constraint(equalTo: postLikes.topAnchor, constant: 20),
-            descriptionText.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: 10)
-        ])
-    }
+   var post: Post? {
+       didSet {
+           authorLabel.text = post?.author
+           postImageView.image = UIImage(named: post?.image ?? "bitkoin")
+           descriptionLabel.text = post?.description
+           likesLabel.text = "Likes: \(post?.likes ?? 0)"
+           viewsLabel.text = "Views: \(post?.views ?? 0)"
+       }
+   }
+   
+   private let authorLabel: UILabel = {
+       let label = UILabel()
+       label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+       label.textColor = .textCollor
+       label.numberOfLines = 1
+       label.translatesAutoresizingMaskIntoConstraints = false
+       return label
+   }()
+   
+   private let postImageView: UIImageView = {
+       let imageView = UIImageView()
+       imageView.contentMode = .scaleAspectFit
+       imageView.backgroundColor = .backgroundColor
+       imageView.translatesAutoresizingMaskIntoConstraints = false
+       return imageView
+   }()
+   
+   private let descriptionLabel: UILabel = {
+       let label = UILabel()
+       label.textColor = .textCollor
+       label.numberOfLines = 0
+       label.translatesAutoresizingMaskIntoConstraints = false
+       return label
+   }()
+   
+   private let likesLabel: UILabel = {
+       let label = UILabel()
+       label.textColor = .textCollor
+       label.translatesAutoresizingMaskIntoConstraints = false
+       return label
+   }()
+   
+   private let viewsLabel: UILabel = {
+       let label = UILabel()
+       label.textColor = .textCollor
+       label.translatesAutoresizingMaskIntoConstraints = false
+       return label
+   }()
+   
+   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+       super.init(style: style, reuseIdentifier: reuseIdentifier)
+       backgroundColor = .backgroundColor
+       setupViews()
+   }
+   
+   required init?(coder: NSCoder) {
+       fatalError("init(coder:) has not been implemented")
+   }
+   
+
+   private func setupViews() {
+       
+       let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.doubleTap))
+       doubleTap.numberOfTapsRequired = 2
+       self.addGestureRecognizer(doubleTap)
+       
+       contentView.addSubview(authorLabel)
+       contentView.addSubview(postImageView)
+       contentView.addSubview(descriptionLabel)
+       contentView.addSubview(likesLabel)
+       contentView.addSubview(viewsLabel)
+       
+       let constraints = [
+           authorLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+           authorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+           authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+           
+           postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 12),
+           postImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+           postImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+           postImageView.heightAnchor.constraint(equalTo: postImageView.widthAnchor),
+           
+           descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 12),
+           descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+           descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+                       
+           likesLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
+           likesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+           likesLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+           
+           viewsLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
+           viewsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+           viewsLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+       ]
+       
+       NSLayoutConstraint.activate(constraints)
+       
+   }
+   @objc func doubleTap() {
+       guard let mPost = post else { return }
+        delegate?.savePost(post: mPost)
+   }
 }
 
-
 extension UIView {
-    static let identifaer = String(describing: self)
+    static let identifaer = String(describing: UIView.self)
 }
 

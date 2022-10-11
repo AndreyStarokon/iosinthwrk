@@ -23,7 +23,7 @@ class PhotosTableViewCell: UITableViewCell {
     
     private func custmizeCell() {
         contentView.addSubview(photoCell)
-        photoCell.backgroundColor = .white
+        photoCell.backgroundColor = .backgroundColor
         NSLayoutConstraint.activate([
             photoCell.topAnchor.constraint(equalTo: contentView.topAnchor),
             photoCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

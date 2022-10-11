@@ -7,48 +7,16 @@
 
 import UIKit
 
-struct someUser{
-    static let fullName = "Andrey"
-    static let avatar = "avatar"
-    static let status = "слушает музыку..."
-}
 
-protocol UserService {
+struct User {
+    var id: String
+    var login: String
+    var password: String
     
-    func getUserName (loginName: String) -> User?
-    
-}
-
-final class User {
-    
-    var fullName: String
-    var avatar: String
-    var status: String
-    init (fullName: String, avatar: String, status: String){
-        self.fullName = fullName
-        self.avatar = avatar
-        self.status = status
-    }    
-}
-
-final class CurrentUserService: UserService {
-
-    private let user: User
-    init() {
-        self.user = User(fullName: someUser.fullName, avatar: someUser.avatar, status: someUser.status)
-    }
-    func getUserName(loginName: String) -> User? {
-        if loginName == user.fullName  {
-            return user
-        }
-        return nil
+    init(id: String, login: String, password: String) {
+        self.id = id
+        self.login = login
+        self.password = password
     }
 }
 
-
-
-final class TestUserService: UserService {
-    func getUserName(loginName: String) -> User? {
-        return User(fullName: "Andrey", avatar: "2764195349", status: someUser.status )
-    }
-}

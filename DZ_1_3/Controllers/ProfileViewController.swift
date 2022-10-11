@@ -6,46 +6,68 @@
 //
 import UIKit
 import iOSIntPackage
+import Firebase
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
     var coordinator: ProfileCoordinator?
-    let posts = Post.makePost()
+    
+    private let stack: CoreDataStack
     
     let header = ProfileHeaderView()
     
-//    private let user: UserService
-//    
-//    init(loginName: String, user: UserService) {
-//            self.user = user
-//            super.init(nibName: nil, bundle: nil)
-//            #if DEBUG
-//            view.backgroundColor = .systemGray6
-//            #else
-//            view.backgroundColor = .red
-//            #endif
-//            
-//            guard let user = self.user.getUserName(loginName: loginName) else { return }
-//            header.nameBar.text = user.fullName
-//            header.profileImage.image = UIImage(named: user.avatar)
-//            header.statusTextField.text = user.status
-//        }
+    let posts = [Post(author: "тетя глаша",
+                         description: "113",
+                         image: "bitkoin",
+                         likes: 100500,
+                         views: 124567),
+                    Post(author: "виталик",
+                         description: "цена достигла 3500",
+                         image: "etherium",
+                         likes: 1276543,
+                         views: 8765433),
+                    Post(author: "jhon",
+                         description: "В гречке содержится много витаминов и полезных минералов: В1, В2, В6, фолиевая кислота, кальций, магний, железо, калий. К положительным свойствам относится и то, что эта крупа понижает уровень холестерина в крови, чистит печень от токсинов, обеспечивает правильную работу кишечника, улучшает процесс кроветворения и, как ни странно, борется с бессонницей».",
+                         image: "гречка",
+                         likes: 987654,
+                         views: 1224566),
+                    Post(author: "obert",
+                         description: "Buy PIR detector",
+                         image: "123",
+                         likes: 666,
+                         views: 1245698765)
+       ]
     
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    init(stack: CoreDataStack) {
+            self.stack = stack
+            super.init(nibName: nil, bundle: nil)
+        }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private lazy var imagePublisher = ImagePublisherFacade()
+    
+    private lazy var exitButton: UIButton = {
+            let button = UIButton()
+            button.backgroundColor = .buttonColor
+            button.setTitle("MAPVIEW", for: .normal)
+            button.layer.cornerRadius = 24/2
+            button.layer.masksToBounds = true
+            button.clipsToBounds = true
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.addTarget(self, action: #selector(exitButtonPressed), for: .touchUpInside)
+            return button
+        }()
     
     private lazy var headerTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
-        #if DEBUG
-        table.backgroundColor = .red
-        #else
-        table.backgroundColor = .systemGray6
-        #endif
+        table.backgroundColor = .backgroundColor
         table.dataSource = self
         table.delegate = self
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.register(PostTableViewTabCell.self, forCellReuseIdentifier: PostTableViewTabCell.identifaer)
+        table.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifaer)
         return table
     }()
     
@@ -57,18 +79,28 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         setupConstraint()
-        view.backgroundColor = .red
+        view.backgroundColor = .backgroundColor
     }
     
-    
+    @objc private func exitButtonPressed() {
+        navigationController?.pushViewController(GeoViewController(), animated: true)
+       }
     
     private func setupConstraint() {
         view.addSubview(headerTable)
+        view.addSubview(exitButton)
         NSLayoutConstraint.activate([
             headerTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerTable.topAnchor.constraint(equalTo: view.topAnchor),
             headerTable.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
+        ])
+        NSLayoutConstraint.activate([
+            exitButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            exitButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
+            exitButton.widthAnchor.constraint(equalToConstant: 104),
+            exitButton.heightAnchor.constraint(equalToConstant: 24)
         ])
     }
 }
@@ -106,9 +138,10 @@ extension ProfileViewController: UITableViewDataSource {
            let cell = PhotosTableViewCell()
             return cell
        }
-            let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewTabCell.identifaer, for: indexPath) as! PostTableViewTabCell
-        cell.postCell.setupCell(post: posts[indexPath.row], numb: indexPath.row)
-               return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifaer, for: indexPath) as! PostTableViewCell
+                   cell.post = posts[indexPath.row]
+                   cell.delegate = self
+                   return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -122,4 +155,13 @@ extension ProfileViewController: UITableViewDataSource {
                 navigationController?.pushViewController(photosViewController, animated: true)
     }
    }
+}
+extension ProfileViewController: PostTableCellDelegate {
+    func savePost(post: Post) {
+        stack.createNewTask(author: post.author, description: post.description, image: post.image, likes: post.likes, views: post.views)
+    }
+}
+
+protocol PostTableCellDelegate: AnyObject {
+    func savePost(post: Post)
 }
