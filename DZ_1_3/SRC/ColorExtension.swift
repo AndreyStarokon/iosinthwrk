@@ -29,3 +29,35 @@ extension UIColor {
   }
 
 }
+extension UIColor {
+    static var backgroundColor: UIColor {
+        Self.makeColor(light: .white, dark: .black)
+    }
+
+    static var fieldColor: UIColor {
+        Self.makeColor(light: .white, dark: .darkGray)
+    }
+    static var buttonColor: UIColor {
+        Self.makeColor(light: .systemBlue, dark: .systemRed)
+    }
+    static var textCollor: UIColor {
+        Self.makeColor(light: .black, dark: .white)
+    }
+    private static func makeColor(light: UIColor, dark: UIColor) -> UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor { traitCollection -> UIColor in
+                switch traitCollection.userInterfaceStyle {
+                case .light, .unspecified:
+                    return light
+                case .dark:
+                    return dark
+                @unknown default:
+                    assertionFailure("Case is not supported")
+                    return .red
+                }
+            }
+        } else {
+            return .red
+        }
+    }
+}
