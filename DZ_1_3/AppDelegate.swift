@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let tabController = UITabBarController()
             
 
-            
+            //
             window = UIWindow(frame: UIScreen.main.bounds)
             coordinator = MainCoordinator(navigationController: nil, tabBarController: tabController, stack: coreDataStack)
                     coordinator?.start()
