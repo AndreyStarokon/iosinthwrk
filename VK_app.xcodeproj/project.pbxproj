@@ -21,6 +21,7 @@
 		4733C942283EA7E000501D66 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716EFE927E25B43007935DF /* PostViewController.swift */; };
 		4733C944283EA7E600501D66 /* PostTableViewCell+Extencion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CD04327F61CF600F89EDD /* PostTableViewCell+Extencion.swift */; };
 		4733C946283EA8F300501D66 /* StuctPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716EFE727E25AE3007935DF /* StuctPost.swift */; };
+		473446AE28FDD304008C173A /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473446AD28FDD304008C173A /* NotificationService.swift */; };
 		4736F8B3284B4CA500C03044 /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4736F8B02847D8BA00C03044 /* CurrentUserService.swift */; };
 		4736F8B528533BBD00C03044 /* Cheker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4736F8B428533BBD00C03044 /* Cheker.swift */; };
 		4736F8B728533C4300C03044 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4736F8B628533C4300C03044 /* LoginInspector.swift */; };
@@ -117,6 +118,7 @@
 		4733C924283D56F000501D66 /* StorageService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StorageService.docc; sourceTree = "<group>"; };
 		4733C92A283D56F000501D66 /* StorageServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorageServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4733C931283D56F000501D66 /* StorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceTests.swift; sourceTree = "<group>"; };
+		473446AD28FDD304008C173A /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		4736F8B02847D8BA00C03044 /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
 		4736F8B428533BBD00C03044 /* Cheker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cheker.swift; sourceTree = "<group>"; };
 		4736F8B628533C4300C03044 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				4736F8CC286E200900C03044 /* BrutForce.swift */,
 				4736F8D028736AC100C03044 /* Songs.swift */,
 				4736F8DC287DD98200C03044 /* AppConfiguration.swift */,
+				473446AD28FDD304008C173A /* NotificationService.swift */,
 			);
 			path = SRC;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				4736F8B3284B4CA500C03044 /* CurrentUserService.swift in Sources */,
 				4733C942283EA7E000501D66 /* PostViewController.swift in Sources */,
 				47D34AAB27F241D7002F8680 /* PasswordText.swift in Sources */,
+				473446AE28FDD304008C173A /* NotificationService.swift in Sources */,
 				47F1A7DC27DE4C46009F22B5 /* ProfileTableHederView.swift in Sources */,
 				4736F8C5286B78A200C03044 /* FeedControllerCoordinator.swift in Sources */,
 				4733C946283EA8F300501D66 /* StuctPost.swift in Sources */,

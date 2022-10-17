@@ -7,8 +7,7 @@
 
 import UIKit
 import Foundation
-import FirebaseCore
-import FirebaseAuth
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         private(set) lazy var coreDataStack = CoreDataStack()
         var window: UIWindow?
         var coordinator: MainCoordinator?
-    
+        private let localNotificationsService = LocalNotificationsService()
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
             let tabController = UITabBarController()
             
@@ -29,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     window?.rootViewController = tabController
                     window?.makeKeyAndVisible()
             
+            localNotificationsService.sendNotification()
+            localNotificationsService.registerForLatestUpdatesIfPossible()
 
                    
             
